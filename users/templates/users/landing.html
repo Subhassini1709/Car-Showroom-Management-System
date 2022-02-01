@@ -1,0 +1,122 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Welcome</title>
+    <link rel="stylesheet" href="{% static '/css/style.css' %}" />
+    <script src="https://kit.fontawesome.com/26719dd53c.js" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+</head>
+
+<body id="landing">
+    <div class="container">
+        <div class="scroll-up-btn">
+            <i class="fas fa-angle-up"></i>
+        </div>
+        <nav class="navbar">
+            <div class="max-width">
+                <div class="logo">
+                    <a href="{% url 'Home Page' %}">Car Showroom Management System</a>
+                </div>
+                <ul class="menu">
+                    <li><a id="abt" href="{% url 'Home Page' %}" class="menu-btn">Home</a></li>
+                    <li><a id="first" href="{% url 'About' %}" class="menu-btn">About Us</a></li>
+                    <li><a href="{% url 'Contact' %}" class="menu-btn">Contact Us</a></li>
+                    <li><a href="{% url 'Login' %}" class="menu-btn">Login</a></li>
+                    <div class="menu-btn">
+                        <i class="fas fa-bars"></i>
+                    </div>
+            </div>
+        </nav>
+
+        <section class="main">
+            <div class="max-width">
+                <div class="home-content">
+                    <div class="landing_img">
+                        <img src="{% static '/img/landing.jpeg' %}" alt="">
+                    </div>
+                    <h2>A one stop solution to Buy, Rent and Sell any car. Get started by creating an account from below
+                        !</h2>
+                    <div class="landing-btn">
+                        <a href="{% url 'Login' %}">Login</a>
+                        <a href="{% url 'Register' %}">Register</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="brands">
+            <div class="max-width">
+                <div class="title">
+                    <h2>Brands we deal with</h2>
+                </div>
+                <div class="brands-content">
+                    <div class="brand-item">
+                        <img src="{% static '/img/brand1.png' %}" alt="renault" />
+                    </div>
+                    
+                    <div class="brand-item">
+                        <img src="{% static '/img/brand3.png' %}" alt="ford" />
+                    </div>
+                    <div class="brand-item">
+                        <img src="{% static '/img/brand4.png' %}" alt="hyundai" />
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="cars">
+            <div class="cars_head">
+                <h2>Cars we deal with</h2>
+            </div>
+            <div class="max-width">
+                <div class="card">
+                    <div class="card_content">
+                        <div class="card_img">
+                            <img src="{% static '/img/brandcar4.jpeg' %}" alt="">
+                        </div>
+                        <div class="card_text">
+                            <div class="card_title">
+                                <h2>TAIGUN</h2>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card_content">
+                        <div class="card_img">
+                            <img src="{% static '/img/brandcar2.jpg' %}" alt="">
+                        </div>
+                        <div class="card_text">
+                            <div class="card_title">
+                                <h2>DUSTER</h2>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card_content">
+                        <div class="card_img">
+                            <img src="{% static '/img/brandcar8.jpg' %}" alt="">
+                        </div>
+                        <div class="card_text">
+                            <div class="card_title">
+                                <h2>ECOSPORT</h2>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            <span>Design By <a href="https://www.linkedin.com/in/swastik-raj-singh-80ba881b8/">Swastik - Subhassini</a>
+                | <span class="far fa-copyright"></span> 2022 All rights
+                reserved.</span>
+        </footer>
+    </div>
+    <script src="{% static '/js/script.js' %}"></script>
+</body>
+
+</html>

@@ -1,0 +1,102 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login / Signup</title>
+  <link rel="stylesheet" href="{% static '/css/style.css' %}" />
+  <script src="https://kit.fontawesome.com/26719dd53c.js" crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+</head>
+
+<body id="login">
+  <div class="container">
+    <div class="scroll-up-btn">
+      <i class="fas fa-angle-up"></i>
+    </div>
+    <nav class="navbar">
+      <div class="max-width">
+        <div class="logo">
+          <a href="{% url 'Home Page' %}">Car Showroom Management System</a>
+        </div>
+        <ul class="menu">
+          <li><a id="abt" href="{% url 'Home Page' %}" class="menu-btn">Home</a></li>
+          <li><a id="first" href="{% url 'About' %}" class="menu-btn">About Us</a></li>
+          <li><a href="{% url 'Contact' %}" class="menu-btn">Contact Us</a></li>
+          <li><a href="{% url 'Logout' %}" class="menu-btn active">Logout</a></li>
+        </ul>
+        <div class="menu-btn">
+          <i class="fas fa-bars"></i>
+        </div>
+      </div>
+    </nav>
+    <div class="form-container">
+      <div class="form">
+        <input type="checkbox" id="flip">
+        <div class="cover">
+          <div class="front">
+            <img src="{% static '/img/frontImg.jpg' %}" alt="">
+          </div>
+          <div class="back">
+            <img class="backImg" src="{% static '/img/backImg.jpg' %}" alt="">
+          </div>
+        </div>
+        <div class="forms">
+          <div class="form-content">
+            <div class="signup-form">
+              <div class="title">Signup</div>
+              <form method="POST" action="">
+                {% csrf_token %}  
+                <div class="input-boxes">
+                  <div class="input-box">
+                    <i class="fas fa-user"></i>
+                    {{form.username}}
+                  </div>
+                  <div class="input-box">
+                    <i class="fas fa-envelope"></i>
+                    {{form.email}}
+                  </div>
+                  
+                  
+                  <div class="input-box">
+                    <i class="fas fa-lock"></i>
+                    {{form.password1}}
+                  </div>
+                  <div class="input-box">
+                    <i class="fas fa-lock"></i>
+                    {{form.password2}}
+                  </div>
+
+
+                  <div class="button input-box">
+                    <input type="submit" value="Submit">
+                  </div>
+                  {{form.errors}}
+                  <div class="text sign-up-text">Already have an account? <a href="{% url 'Login' %}">Login now</a></div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <footer>
+      <span>Design By <a href="https://www.linkedin.com/in/swastik-raj-singh-80ba881b8/">Swastik - Subhassini</a>
+        | <span class="far fa-copyright"></span> 2022 All rights
+        reserved.</span>
+    </footer>
+  </div>
+  <script src="{% static '/js/script.js' %}"></script>
+  <script>
+    var form_fields = document.getElementsByTagName('input')
+		form_fields[2].placeholder='Enter your username';
+		form_fields[3].placeholder='Enter your email';
+		form_fields[4].placeholder='Enter your password';
+		form_fields[5].placeholder='Re-enter your password';
+  </script>
+</body>
+
+</html>
