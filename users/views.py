@@ -83,7 +83,10 @@ def brand(request):
     return render(request, 'users/brand_cars.html', {'vehicle':vehicle} )
 
 def specs(request):
-    return render(request, 'users/car_specs.html')
+    car_id = request.POST['car_id']
+    vehicles = BuySpecs.objects.all()
+    vehicle = vehicles.filter(CarID=car_id)
+    return render(request, 'users/car_specs.html', {'vehicle':vehicle} )
 
 def buyform(request):
     return render(request, 'users/buy_form.html')

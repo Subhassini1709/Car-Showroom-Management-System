@@ -33,9 +33,11 @@
                 </div>
             </div>
         </nav>
+        {% for i in vehicle|slice:":1" %}
         <div class="brand_title">
-            <h2>Change</h2>
+            <h2>{{i.BBrandID.BrandName}}</h2>
         </div>
+        {% endfor %}
         <section class="cars">
             <div class="max-width">
                 <div class="card">
@@ -51,9 +53,9 @@
                                 <h2>{{i.BCarName}}</h2>
                             </div>
                             <div class="card_btn">
-                                <form action="/users/specs/" method="post">
+                                <form action="{% url 'Specs' %}" method="post">
                                     {% csrf_token %}
-                                    <input type="hidden" name="id" value="{{i.BCarID}}">
+                                    <input type="hidden" name="car_id" value={{i.BCarID}}>
                                     <input type="submit" value="View">
                                 </form>
                             </div>

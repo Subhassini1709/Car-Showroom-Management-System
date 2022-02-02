@@ -15,7 +15,8 @@ class BuyCar(models.Model):
 
 class BuySpecs(models.Model):
     CarID = models.OneToOneField(BuyCar, on_delete=models.CASCADE,primary_key=True)
-    Image = models.ImageField(upload_to="media")
+    # Image = models.ImageField(upload_to="media")
+    Image = models.ImageField()
     Price = models.FloatField()
     Rating = models.IntegerField()
     Mileage = models.FloatField()

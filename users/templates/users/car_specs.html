@@ -13,6 +13,7 @@
 </head>
 
 <body id="specs">
+    {% for i in vehicle %}
     <div class="container">
         <div class="scroll-up-btn">
             <i class="fas fa-angle-up"></i>
@@ -40,10 +41,10 @@
 
 
 
-                        <img src="{% static '/img/brandcar2.jpg' %}" alt="">chnage
+                        <!-- <img src="" alt=""> -->
                     </div>
                     <div class="car_data">
-                        <h2>Renault Duster</h2>  change
+                        <h2>{{i.CarID.BBrandID.BrandName}} {{i.CarID.BCarName}}</h2>
                         <div class="rating">
                             <span class="fa fa-star checked"></span>
                             <span class="fa fa-star checked"></span>
@@ -51,7 +52,7 @@
                             <span class="fa fa-star"></span>
                             <span class="fa fa-star"></span>
                         </div>
-                        <h1>Rs 9.86 - 14.25 Lakh</h1> change
+                        <h1>{{i.Price}} Lakhs</h1>
                         <div class="car_btns">
                             <a href="#spec">View Specs</a>
                             <form action="/users/specs/" method="post">
@@ -73,27 +74,27 @@
                     <main class="specs__content">
                         <article class="specs__profile">
                             <span class="specs__name">ARAI Mileage</span>
-                            <span class="specs__value">16.42 kmpl</span>
+                            <span class="specs__value">{{i.Mileage}} kmpl</span>
                         </article>
 
                         <article class="specs__profile">
-                            <span class="specs__name">Engine Displacement (cc)</span>
-                            <span class="specs__value">1330</span>
+                            <span class="specs__name">Engine Displacement</span>
+                            <span class="specs__value">{{i.CC}} cc</span>
                         </article>
 
                         <article class="specs__profile">
                             <span class="specs__name">Seating Capacity</span>
-                            <span class="specs__value">5</span>
+                            <span class="specs__value">{{i.SeatingCapacity}}</span>
                         </article>
 
                         <article class="specs__profile">
-                            <span class="specs__name">Boot Space (Litres)</span>
-                            <span class="specs__value">475</span>
+                            <span class="specs__name">Boot Space</span>
+                            <span class="specs__value">{{i.Bootspace}} L</span>
                         </article>
 
                         <article class="specs__profile">
                             <span class="specs__name">Body Type</span>
-                            <span class="specs__value">SUV</span>
+                            <span class="specs__value">{{i.BodyType}}</span>
                         </article>
                     </main>
                 </article>
@@ -102,27 +103,27 @@
                     <main class="specs__content">
                         <article class="specs__profile">
                             <span class="specs__name">Fuel Type</span>
-                            <span class="specs__value">Petrol</span>
+                            <span class="specs__value">{{i.FuelType}}</span>
                         </article>
 
                         <article class="specs__profile">
                             <span class="specs__name">No. of cylinder</span>
-                            <span class="specs__value">4</span>
+                            <span class="specs__value">{{i.NoOfCylinders}}</span>
                         </article>
 
                         <article class="specs__profile">
                             <span class="specs__name">Transmission Type</span>
-                            <span class="specs__value">Automatic</span>
+                            <span class="specs__value">{{i.TransmissionType}}</span>
                         </article>
 
                         <article class="specs__profile">
                             <span class="specs__name">Fuel Tank Capacity</span>
-                            <span class="specs__value">50</span>
+                            <span class="specs__value">{{i.FuelCapacity}} L</span>
                         </article>
 
                         <article class="specs__profile">
                             <span class="specs__name">Service Cost (Avg. of 5 years)</span>
-                            <span class="specs__value">Rs.3,858</span>
+                            <span class="specs__value">Rs. {{i.ServiceCost}}</span>
                         </article>
                     </main>
                 </article>
@@ -135,6 +136,7 @@
                 reserved.</span>
         </footer>
     </div>
+    {% endfor %}
     <script src="{% static '/js/script.js' %}"></script>
 </body>
 
