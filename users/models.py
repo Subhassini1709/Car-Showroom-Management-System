@@ -1,3 +1,4 @@
+from distutils.command.upload import upload
 from django.db import models
 from django.contrib.auth.models import User
 
@@ -8,15 +9,14 @@ class BuyBrand(models.Model):
 
 class BuyCar(models.Model):
     BCarID = models.CharField(max_length=100,primary_key=True)
-    BCarImage = models.ImageField()
+    BCarImage = models.BinaryField()
     BCarName = models.CharField(max_length=100)
     BBrandID = models.ForeignKey(BuyBrand, on_delete=models.CASCADE)
     BNumOfCars = models.IntegerField()
 
 class BuySpecs(models.Model):
     CarID = models.OneToOneField(BuyCar, on_delete=models.CASCADE,primary_key=True)
-    # Image = models.ImageField(upload_to="media")
-    Image = models.ImageField()
+    Image = models.BinaryField()
     Price = models.FloatField()
     Rating = models.IntegerField()
     Mileage = models.FloatField()
@@ -40,7 +40,7 @@ class BuyBooking(models.Model):
 class RentCar(models.Model):
     RCarID = models.CharField(max_length=100,primary_key=True)
     RCarName = models.CharField(max_length=100)
-    RImage = models.ImageField()
+    RImage = models.BinaryField()
     RCarPrice = models.IntegerField()
     RFuel = models.CharField(max_length=100)
     RMileage = models.FloatField()

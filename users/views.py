@@ -8,6 +8,7 @@ from django.contrib.auth.models import User
 from .forms import CreateUserForm
 from django.contrib import messages
 from users.models import *
+from base64 import b64encode
 
 @login_required(login_url='Login')
 def home(request):
@@ -80,12 +81,16 @@ def brand(request):
     brand_id = request.POST['brand_id']
     vehicles = BuyCar.objects.all()
     vehicle = vehicles.filter(BBrandID=brand_id)
+    for i in vehicle:
+        i.BCarImage = b64encode(i.BCarImage).decode()
     return render(request, 'users/brand_cars.html', {'vehicle':vehicle} )
 
 def specs(request):
     car_id = request.POST['car_id']
     vehicles = BuySpecs.objects.all()
     vehicle = vehicles.filter(CarID=car_id)
+    for i in vehicle:
+        i.Image = b64encode(i.Image).decode()
     return render(request, 'users/car_specs.html', {'vehicle':vehicle} )
 
 def buyform(request):
