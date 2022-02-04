@@ -35,26 +35,28 @@
         </nav>
         <div class="rent-container">
             <div class="rent_cars">
+                {% for i in vehicles %}
                 <div class="card">
                     <div class="face face1">
                         <div class="content">
                             <!-- <span class="stars"></span> -->
                             <div class="carname">
-                                <h2>Renault Triber</h3>
+                                <h2>{{i.RCarName}}</h3>
                             </div>
                             <h2>Features</h2>
                             <ul>
-                                <li>Petrol</li>
-                                <li>20 Km/L Mileage</li>
-                                <li>7-Seater</li>
+                                <li>{{i.RFuel}}</li>
+                                <li>{{i.RMileage}} Km/L Mileage</li>
+                                <li>{{i.RSeatingCapacity}}-Seater</li>
                             </ul>
                             <h2>Price: <span>Rs 5000 / day</span></h2>
                         </div>
                     </div>
-                    <div class="face face2" style="background: url(/static/img/brandcar1.jpg);"></div>
+                    <div class="face face2" style="background: url('data:;base64,{{i.RImage}}');"></div>
                 </div>
+                {% endfor %}
 
-                <div class="card">
+                <!-- <div class="card">
                     <div class="face face1">
                         <div class="content">
                             <div class="carname">
@@ -142,7 +144,7 @@
                         </div>
                     </div>
                     <div class="face face2" style="background: url(/static/img/rent4.jpg);"></div>
-                </div>
+                </div> -->
             </div>
         </div>
         <div class="rent_btn">

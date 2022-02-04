@@ -15,7 +15,7 @@ class BuyCar(models.Model):
     BNumOfCars = models.IntegerField()
 
 class BuySpecs(models.Model):
-    CarID = models.OneToOneField(BuyCar, on_delete=models.CASCADE,primary_key=True)
+    CarID = models.ForeignKey(BuyCar, on_delete=models.CASCADE,primary_key=True)
     Image = models.BinaryField()
     Price = models.FloatField()
     Rating = models.IntegerField()
@@ -31,7 +31,6 @@ class BuySpecs(models.Model):
     ServiceCost = models.IntegerField()
 
 class BuyBooking(models.Model):
-    BBrandID = models.ForeignKey(BuyBrand, on_delete=models.CASCADE)
     BCarID = models.ForeignKey(BuyCar, on_delete=models.CASCADE)
     BCustomerID = models.ForeignKey(User,on_delete=models.CASCADE)
     BAddress = models.TextField()
@@ -52,7 +51,7 @@ class RentBooking(models.Model):
     FromDate = models.DateField()
     ToDate = models.DateField()
     NoOfDays = models.IntegerField()
-    RentPerDay = models.IntegerField()
+    RentPerDay = models.ForeignKey(RentCar, on_delete=models.CASCADE)
     TotalRent = models.IntegerField()
     RPhoneNum = models.BigIntegerField()
     RAddress = models.TextField()

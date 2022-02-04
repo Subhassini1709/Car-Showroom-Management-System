@@ -43,7 +43,7 @@
               <h3>Fill out the form below and we'll get back to you!</h3>
             </div>
             <div class="row body">
-              <form action="#" method="post">
+              <form action="{% url 'SellForm' %}" method="post">
                 {% csrf_token %}
                 <ul>
                   <li>

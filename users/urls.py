@@ -13,6 +13,7 @@ urlpatterns = [
     path('logout/', auth_views.LogoutView.as_view(template_name = 'users/logout.html'), name='Logout'),
 
     path('buy/', views.buy, name='Buy'),
+    path('buy_dump/',views.buydump, name='BuyDump'),
     path('brand/', views.brand, name='Brand'), 
     path('car_specs/', views.specs, name='Specs'),
     path('buy_form', views.buyform, name='BuyForm'),

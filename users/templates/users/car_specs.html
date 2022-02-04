@@ -62,9 +62,11 @@
               <h1>{{i.Price}} Lakhs</h1>
               <div class="car_btns">
                 <a href="#spec">View Specs</a>
-                <form action="{% url 'BuyForm' %}" method="post">
+                <form action="{% url 'BuyDump' %}" method="post">
                   {% csrf_token %}
-                  <input type="hidden" name="car_id" value="{{i.BCarID}}" />
+                  <input type="hidden" name="cid" value="{{i.CarID.BCarID}}" />
+
+                  <!-- <input type="hidden" name="bid" value="{{i.CarID.BBrandID.BrandID}}" />  -->
                   <input type="submit" value="Book" />
                 </form>
               </div>

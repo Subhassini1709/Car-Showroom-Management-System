@@ -50,12 +50,14 @@
                     <p class="left">
                       <label for="cars">Choose a car</label>
                       <select id="cars" name="cars" required>
-                        <option value="triber">RENAULT TRIBER</option>
-                        <option value="ecosport">FORD ECOSPORT</option>
+                        {% for i in vehicles %}
+                        <option value="{{i.RCarName}}">{{i.RCarName}}</option>
+                        <!-- <option value="ecosport">FORD ECOSPORT</option>
                         <option value="passat">VOLKSWAGEN PASSAT</option>
                         <option value="k10">ALTO K10</option>
                         <option value="hector">MG HECTOR</option>
-                        <option value="i10">HYUNDAI i10</option>
+                        <option value="i10">HYUNDAI i10</option> -->
+                        {% endfor %}
                       </select>
                     </p>
                     <p class="pull-right">
