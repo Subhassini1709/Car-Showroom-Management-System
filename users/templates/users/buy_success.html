@@ -47,8 +47,9 @@
                     </div>
                     <div class="booking_details">
                         <h2><span>Booking ID:</span> {{i.id}}</h2>
-                        <h2><span>Amount Paid:</span> 10 Lakh</h2>
-                        <!-- <h2><span>Booking Date and Time:</span> </h2> -->
+                        {% for j in cost %}
+                            <h2><span>Amount Paid:</span> {{j.Price}} Lakh</h2>
+                        {% endfor %}
                         <h2><span>Car Brand:</span> {{i.BBrandID.BrandName}}</h2>
                         <h2><span>Car Model:</span> {{i.BCarID.BCarName}}</h2>
                     </div>

@@ -87,7 +87,9 @@ def buydump(request):
     car_id = request.POST['cid']
     vehicles = BuyCar.objects.all()
     vehicle = vehicles.filter(BCarID=car_id)
-    return render(request, 'users/buy_form.html', {'vehicle': vehicle})
+    vs = BuyCar.objects.get(BCarID=car_id)
+        
+    return render(request, 'users/buy_form.html', {'vehicle': vehicle, 'vs':vs})
 
 
 def brand(request):
@@ -127,7 +129,10 @@ def buysuccess(request):
     bookid = BuyBooking.objects.order_by('-id')[0]
     bookdetails = BuyBooking.objects.all()
     bookdetail = bookdetails.filter(id=bookid.id)
-    return render(request, 'users/buy_success.html',{'bookdetail':bookdetail})
+    b = BuyBooking.objects.get(id=bookid.id)
+    costs = BuySpecs.objects.all()
+    cost = costs.filter(CarID_id=b.BCarID) 
+    return render(request, 'users/buy_success.html',{'bookdetail':bookdetail, 'cost':cost})
 
 def rent(request):
     vehicles = RentCar.objects.all()
