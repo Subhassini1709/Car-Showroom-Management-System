@@ -49,18 +49,19 @@
                                     <li>
                                         <p class="left">
                                             <label for="phone">Enter your phone number</label>
-                                            <input type="text" name="phone" id="phone" placeholder="+91 017 109 2000" required />
+                                            <input type="text" name="phone" id="phone" placeholder="+91 017 109 2000"
+                                                required />
                                         </p>
                                         <p class="pull-right">
                                             <label for="address">Enter your address</label>
-                                            <input type="text" name="address" id="address" placeholder="Address" required />
+                                            <input type="text" name="address" id="address" placeholder="Address"
+                                                required />
                                         </p>
-                                        <!-- {% for i in vehicle %}
-                                        
-                                            <input type="hidden" name="carid" id="carid" value="{{i.BCarID}}" />
-                                            {{i.BCarID}}
-                                        
-                                        {% endfor %} -->
+                                        {% for i in vehicle %}
+                                        <input type="hidden" name="carid" id="carid" value="{{i.BCarID}}" />
+                                        <input type="hidden" name="brandid" id="brandid"
+                                            value="{{i.BBrandID.BrandID}}" />
+                                        {% endfor %}
                                     </li>
                                     <li>
                                         <div class="divider"></div>

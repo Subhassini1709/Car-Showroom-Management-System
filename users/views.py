@@ -90,7 +90,6 @@ def buydump(request):
     return render(request, 'users/buy_form.html', {'vehicle': vehicle})
 
 
-
 def brand(request):
     brand_id = request.POST['brand_id']
     vehicles = BuyCar.objects.all()
@@ -111,17 +110,24 @@ def specs(request):
 
 def buyform(request):
     if request.method == "POST":
-        BCarID = BuyCar.Objects.get()
-        BCustomerID = request.user
-        BAddress = request.POST.get('address')
-        BPhoneNumber = request.POST.get('phone')
-        ins = BuyBooking(BCarID=BuyCar.Objects.get(Bcar),BCustomerID=request.user, BAddress=BAddress, BPhoneNumber=BPhoneNumber)
+        x = request.POST['carid']
+        carid = BuyCar.objects.get(BCarID=x)
+        y = request.POST['brandid']
+        brandid = BuyBrand.objects.get(BrandID=y)
+        customerid = request.user
+        address = request.POST['address']
+        phone = request.POST['phone']
+        ins = BuyBooking(BCarID=carid, BBrandID=brandid, BCustomerID=customerid, BAddress=address, BPhoneNumber=phone)
         ins.save()
-    return render(request, 'users/buysuccess.html')
-    
+        return redirect('BuySuccess')
+    return render(request, 'users/buy_form.html')
 
+    
 def buysuccess(request):
-    return render(request, 'users/buy_success.html')
+    bookid = BuyBooking.objects.order_by('-id')[0]
+    bookdetails = BuyBooking.objects.all()
+    bookdetail = bookdetails.filter(id=bookid.id)
+    return render(request, 'users/buy_success.html',{'bookdetail':bookdetail})
 
 def rent(request):
     vehicles = RentCar.objects.all()
@@ -131,25 +137,26 @@ def rent(request):
 
 def rentform(request):
     vehicles = RentCar.objects.all()
-    
     if request.method=='POST':
         customerid = request.user
         carname = request.POST['cars']
-        vehicle = RentCar.objects.get(RCarName=carname)
-        carid = vehicle.RCarID
-        days = request.POST['days']
+        carid = RentCar.objects.get(RCarName=carname)
         fromdate = request.POST['fromdate']
         todate = request.POST['todate']
+        days = request.POST['days']
+        rent = carid.RCarPrice
         phone = request.POST['phone']
         address = request.POST['address']
-        rentperday = vehicle.RentPerDay
-        ins = RentBooking(RCustomerID=customerid,RCarID=carid,NoOfDays=days,FromDate=fromdate,ToDate=todate,RPhoneNum=phone, SFuel=fuel, SMileage=mileage, SSeatingCapacity=seating)
+        ins = RentBooking(RCustomerID=customerid, RCarID=carid, FromDate=fromdate, ToDate=todate,NoOfDays=days, RentPerDay=rent, RPhoneNum=phone, RAddress=address)
         ins.save()  
-        return redirect('BuySuccess')
+        return redirect('RentSuccess')
     return render(request, 'users/rent_form.html',{'vehicles':vehicles})
 
 def rentsuccess(request):
-    return render(request, 'users/rent_success.html')
+    rentid = RentBooking.objects.order_by('-id')[0]
+    rentdetails = RentBooking.objects.all()
+    rentdetail = rentdetails.filter(id=rentid.id)
+    return render(request, 'users/rent_success.html',{'rentdetail':rentdetail})
 
 def sellform(request):
     if request.method=='POST':
@@ -162,13 +169,18 @@ def sellform(request):
         fuel = request.POST['fuel']
         mileage = request.POST['mileage']
         seating = request.POST['seating']
-        ins = SellCar(SCustomerID=customerid,SBrandName=brand, SCarName=carname, SCarPrice=price, KmRun=km, CarAge=age, SFuel=fuel, SMileage=mileage, SSeatingCapacity=seating)
+        phone = request.POST['phone']
+        address = request.POST['address']
+        ins = SellCar(SCustomerID=customerid,SBrandName=brand, SCarName=carname, SCarPrice=price, KmRun=km, CarAge=age, SFuel=fuel, SMileage=mileage, SSeatingCapacity=seating, SPhoneNum=phone, SAddress=address)
         ins.save()  
-        return redirect('BuySuccess')
+        return redirect('SellSuccess')
     return render(request, 'users/sell_form.html')
 
 def sellsuccess(request):
-    return render(request, 'users/sell_success.html')
+    sellid = SellCar.objects.order_by('-id')[0]
+    selldetails = SellCar.objects.all()
+    selldetail = selldetails.filter(id=sellid.id)
+    return render(request, 'users/sell_success.html',{'selldetail':selldetail})
 
 
 
