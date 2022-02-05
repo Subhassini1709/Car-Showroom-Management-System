@@ -16,15 +16,15 @@ urlpatterns = [
     path('buy_dump/',views.buydump, name='BuyDump'),
     path('brand/', views.brand, name='Brand'), 
     path('car_specs/', views.specs, name='Specs'),
-    path('buy_form', views.buyform, name='BuyForm'),
-    path('buy_success', views.buysuccess, name='BuySuccess'),
+    path('buy_form/', views.buyform, name='BuyForm'),
+    path('buy_success/', views.buysuccess, name='BuySuccess'),
 
     path('rent/', views.rent, name='Rent'),
     path('rent_form/', views.rentform, name='RentForm'),
     path('rent_success/', views.rentsuccess, name='RentSuccess'),
 
     path('sell_form/', views.sellform, name='SellForm'),
-    path('sell_success/', views.rentform, name='SellSuccess'),
+    path('sell_success/', views.sellsuccess, name='SellSuccess'),
     
 ]
 

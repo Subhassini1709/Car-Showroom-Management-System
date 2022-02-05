@@ -32,6 +32,7 @@ class BuySpecs(models.Model):
 
 class BuyBooking(models.Model):
     BCarID = models.ForeignKey(BuyCar, on_delete=models.CASCADE)
+    BBrandID = models.ForeignKey(BuyBrand, on_delete=models.CASCADE)
     BCustomerID = models.ForeignKey(User,on_delete=models.CASCADE)
     BAddress = models.TextField()
     BPhoneNumber = models.BigIntegerField()
@@ -51,7 +52,7 @@ class RentBooking(models.Model):
     FromDate = models.DateField()
     ToDate = models.DateField()
     NoOfDays = models.IntegerField()
-    RentPerDay = models.ForeignKey(RentCar, on_delete=models.CASCADE)
+    RentPerDay = models.IntegerField()
     TotalRent = models.IntegerField()
     RPhoneNum = models.BigIntegerField()
     RAddress = models.TextField()
@@ -66,7 +67,5 @@ class SellCar(models.Model):
     SFuel = models.CharField(max_length=100)
     SMileage = models.FloatField()
     SSeatingCapacity = models.IntegerField()
-
-
-
-
+    SPhoneNum = models.BigIntegerField()
+    SAddress = models.TextField()

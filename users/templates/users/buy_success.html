@@ -39,20 +39,20 @@
                 <h3>Your Car has been booked and will be delivered to your given address.</h3>
                 <h3>Here are the booking details</h3>
                 <div class="booking">
+                    {% for i in bookdetail %}
                     <div class="customer">
-                        <h2><span>Name:</span> Swastik Raj Singh</h2>
-                        <h2><span>Mobile:</span> 7760484255</h2>
-                        <h2><span>Email:</span> swra19is@cmrit.ac.in</h2>
-                        <h2><span>Address:</span> Bangalore</h2>
+                        <h2><span>Name:</span> {{i.BCustomerID.username}}</h2>
+                        <h2><span>Mobile:</span> {{i.BPhoneNumber}}</h2>
+                        <h2><span>Address:</span> {{i.BAddress}}</h2>
                     </div>
                     <div class="booking_details">
-                        <h2><span>Booking ID:</span> jh12g3jhved3vh2</h2>
+                        <h2><span>Booking ID:</span> {{i.id}}</h2>
                         <h2><span>Amount Paid:</span> 10 Lakh</h2>
                         <!-- <h2><span>Booking Date and Time:</span> </h2> -->
-                        <h2><span>Car Brand:</span> RENAULT</h2>
-                        <h2><span>Car Model:</span> DUSTER</h2>
-                        <h2><span>Car Color:</span> Royal Blue</h2>
+                        <h2><span>Car Brand:</span> {{i.BBrandID.BrandName}}</h2>
+                        <h2><span>Car Model:</span> {{i.BCarID.BCarName}}</h2>
                     </div>
+                    {% endfor %}
                 </div>
                 <div class="backtohome">
                     <a href="{% url 'Home Page' %}">Continue Shopping</a>
