@@ -26,7 +26,7 @@
                     <li><a id="abt" href="{% url 'Home Page' %}" class="menu-btn">Home</a></li>
                     <li><a id="first" href="{% url 'About' %}" class="menu-btn">About Us</a></li>
                     <li><a href="{% url 'Contact' %}" class="menu-btn">Contact Us</a></li>
-                    <li><a href="{% url 'Login' %}" class="menu-btn">Login</a></li>
+                    <li><a href="{% url 'Logout' %}" class="menu-btn">Logout</a></li>
                 </ul>
                 <div class="menu-btn">
                     <i class="fas fa-bars"></i>
@@ -43,12 +43,13 @@
                     <div class="customer">
                         <h2><span>Name:</span> {{i.BCustomerID.username}}</h2>
                         <h2><span>Mobile:</span> {{i.BPhoneNumber}}</h2>
+                        <h2><span>Name:</span> {{i.BCustomerID.email}}</h2>
                         <h2><span>Address:</span> {{i.BAddress}}</h2>
                     </div>
                     <div class="booking_details">
                         <h2><span>Booking ID:</span> {{i.id}}</h2>
                         {% for j in cost %}
-                            <h2><span>Amount Paid:</span> {{j.Price}} Lakh</h2>
+                            <h2><span>Amount to be paid:</span> {{j.Price}} Lakh</h2>
                         {% endfor %}
                         <h2><span>Car Brand:</span> {{i.BBrandID.BrandName}}</h2>
                         <h2><span>Car Model:</span> {{i.BCarID.BCarName}}</h2>
