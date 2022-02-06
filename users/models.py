@@ -69,3 +69,10 @@ class SellCar(models.Model):
     SSeatingCapacity = models.IntegerField()
     SPhoneNum = models.BigIntegerField()
     SAddress = models.TextField()
+
+class Contact(models.Model):
+    CFname = models.CharField(max_length=100)
+    CLname = models.CharField(max_length=100)
+    CEmail = models.EmailField()
+    CPhone = models.BigIntegerField()
+    CMessage = models.TextField()
