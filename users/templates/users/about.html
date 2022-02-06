@@ -24,10 +24,22 @@
                     <a href="{% url 'Home Page' %}">Car Showroom Management System</a>
                 </div>
                 <ul class="menu">
-                    <li><a id="abt" href="{% url 'Home Page' %}" class="menu-btn">Home</a></li>
+                    <li>
+                        {% if request.user.is_authenticated %}
+                        <a id="abt" href="{% url 'Home Page' %}" class="menu-btn">Home</a>
+                        {% else %}
+                        <a id="abt" href="{% url 'Landing' %}" class="menu-btn">Home</a>
+                        {% endif %}
+                    </li>
                     <li><a id="first" href="{% url 'About' %}" class="menu-btn active">About Us</a></li>
                     <li><a href="{% url 'Contact' %}" class="menu-btn">Contact Us</a></li>
-                    <li><a href="{% url 'Login' %}" class="menu-btn">Login</a></li>
+                    <li>
+                        {% if request.user.is_authenticated %}
+                        <a href="{% url 'Logout' %}" class="menu-btn">Logout</a>
+                        {% else %}
+                        <a href="{% url 'Login' %}" class="menu-btn">Login</a>
+                        {% endif %}
+                    </li>
                 </ul>
                 <div class="menu-btn">
                     <i class="fas fa-bars"></i>

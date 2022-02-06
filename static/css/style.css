@@ -3,7 +3,6 @@
   padding: 0;
   box-sizing: border-box;
   text-decoration: none;
-  /* overflow-x: hidden; */
 }
 
 .max-width {
@@ -802,6 +801,7 @@ footer span a:hover {
 
 .brands {
   background-color: black;
+  height: 92.5vh;
 }
 
 .brands .title {
@@ -815,25 +815,11 @@ footer span a:hover {
   color: white ;
 }
 
-.brand-item {
-  display: inline-block;
-  text-align: center;
-}
-
-.brand-item h2 {
-  opacity: 0;
-  text-decoration: underline;
-  text-decoration-color: crimson;
-  text-decoration-thickness: 3px;
-  color: crimson;
-  font-size: 38px;
-}
-
 .brand-item img:hover{
   transform: scale(1.05);
 }
 
-.brand-item a:hover + h2 {
+.brand-item form input:hover {
   transition: 0.5s;
   opacity: 1;
 }
@@ -845,7 +831,31 @@ footer span a:hover {
   object-fit: contain;
 }
 
+.brand-item {
+  display: inline-block;
+  text-align: center;
+}
+
+.brand-item input[type=submit]{
+  background-color: crimson;
+  border: 2px solid crimson;
+  color: white;
+  padding: 5px 15px;
+  border-radius: 5px;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.brand-item input:hover {
+  background: none;
+  color: white
+}
+
 /* CARS STYLES */
+
+.cars {
+  padding: 80px 0 25px 0;
+}
 
 #card .container {
   background: black;
@@ -861,6 +871,7 @@ footer span a:hover {
 .brand_title h2 {
   border-bottom: 3px solid crimson;
   color: #fff;
+  font-size: 36px;
 }
 
 .card {
@@ -1121,7 +1132,6 @@ footer span a:hover {
 
 .specs_container {
   margin: 0;
-  /* background: url(/static/img/bg.png); */
   display: grid;
   grid-template-columns: 3fr 3fr;
   height: 80vh;
@@ -1179,7 +1189,9 @@ footer span a:hover {
 }
 
 .car_btns {
-  margin-top: 60px;
+  display: flex;
+  margin-top: 30px;
+  margin-left: 80px;
 }
 
 .car_btns a, .car_btns input {
@@ -1189,7 +1201,8 @@ footer span a:hover {
   padding: 10px;
   border-radius: 10px;
   font-size: 20px;
-  margin: 20px;
+  margin: 10px;
+  cursor: pointer;
 }
 
 .car_btns a:hover, .car_btns input:hover {
@@ -1223,7 +1236,6 @@ footer span a:hover {
   text-align: center;
   padding: 20px;
   padding-bottom: 0px;
-  /* position: absolute; */
   right: 0;
   left: 0;
   bottom: 0;
@@ -1251,7 +1263,7 @@ footer span a:hover {
   align-items: center;
   justify-content: space-between;
   background: black;
-  padding: 9modal0px 0;
+  padding: 100px 0 55px 0;
 }
 
 .rent-form {
@@ -1361,6 +1373,10 @@ footer span a:hover {
   margin: 0 0 0.5em 0;
   color: crimson;
   font-size: 1em;
+}
+.rent .pull-right label{
+  position: relative;
+  right: -65px;
 }
 .rent form input, .rent form select {
   margin: 0 0 0.5em 0;
@@ -1522,10 +1538,10 @@ footer span a:hover {
 
 .buy_success {
   width: 100%;
-  height: 10%;
-  overflow: hidden; /* Enable scroll if needed */
-  background-color: rgb(0,0,0); /* Fallback color */
-  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  height: 92.5vh;
+  overflow: hidden;
+  background-color: rgb(0,0,0);
+  background-color: rgba(0,0,0,0.4);
 }
 .buy_success .customer {
   width: 50%;

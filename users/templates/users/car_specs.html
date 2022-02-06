@@ -1,155 +1,148 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Specs</title>
-    <link rel="stylesheet" href="{% static '/css/style.css' %}" />
-    <script
-      src="https://kit.fontawesome.com/26719dd53c.js"
-      crossorigin="anonymous"
-    ></script>
-    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-  </head>
 
-  <body id="specs">
-    {% for i in vehicle %}
-    <div class="container">
-      <div class="scroll-up-btn">
-        <i class="fas fa-angle-up"></i>
-      </div>
-      <nav class="navbar">
-        <div class="max-width">
-          <div class="logo">
-            <a href="{% url 'Home Page' %}">Car Showroom Management System</a>
-          </div>
-          <ul class="menu">
-            <li>
-              <a id="abt" href="{% url 'Home Page' %}" class="menu-btn">Home</a>
-            </li>
-            <li>
-              <a id="first" href="{% url 'About' %}" class="menu-btn"
-                >About Us</a
-              >
-            </li>
-            <li>
-              <a href="{% url 'Contact' %}" class="menu-btn">Contact Us</a>
-            </li>
-            <li><a href="{% url 'Login' %}" class="menu-btn">Login</a></li>
-          </ul>
-          <div class="menu-btn">
-            <i class="fas fa-bars"></i>
-          </div>
-        </div>
-      </nav>
-      <section class="buy_car">
-        <div class="max-width">
-          <div class="buy_main">
-            <div class="car_img">
-              <img src="data:;base64,{{i.Image}}" alt="" />
-            </div>
-            <div class="car_data">
-              <h2>{{i.CarID.BBrandID.BrandName}} {{i.CarID.BCarName}}</h2>
-              <div class="rating">
-                <span class="fa fa-star checked"></span>
-                <span class="fa fa-star checked"></span>
-                <span class="fa fa-star checked"></span>
-                <span class="fa fa-star"></span>
-                <span class="fa fa-star"></span>
-              </div>
-              <h1>{{i.Price}} Lakhs</h1>
-              <div class="car_btns">
-                <a href="#spec">View Specs</a>
-                <form action="{% url 'BuyDump' %}" method="post">
-                  {% csrf_token %}
-                  <input type="hidden" name="cid" id="cid" value="{{i.CarID.BCarID}}" />
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Specs</title>
+  <link rel="stylesheet" href="{% static '/css/style.css' %}" />
+  <script src="https://kit.fontawesome.com/26719dd53c.js" crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+</head>
 
-                  <input type="submit" value="Book" />
-                </form>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-      <div class="specs_main" id="spec">
-        <div class="specs_title">
-          <h2>Key Specifications</h2>
-        </div>
-        <div class="specs_container">
-          <article class="specs">
-            <main class="specs__content">
-              <article class="specs__profile">
-                <span class="specs__name">ARAI Mileage</span>
-                <span class="specs__value">{{i.Mileage}} kmpl</span>
-              </article>
-
-              <article class="specs__profile">
-                <span class="specs__name">Engine Displacement</span>
-                <span class="specs__value">{{i.CC}} cc</span>
-              </article>
-
-              <article class="specs__profile">
-                <span class="specs__name">Seating Capacity</span>
-                <span class="specs__value">{{i.SeatingCapacity}}</span>
-              </article>
-
-              <article class="specs__profile">
-                <span class="specs__name">Boot Space</span>
-                <span class="specs__value">{{i.Bootspace}} L</span>
-              </article>
-
-              <article class="specs__profile">
-                <span class="specs__name">Body Type</span>
-                <span class="specs__value">{{i.BodyType}}</span>
-              </article>
-            </main>
-          </article>
-
-          <article class="specs">
-            <main class="specs__content">
-              <article class="specs__profile">
-                <span class="specs__name">Fuel Type</span>
-                <span class="specs__value">{{i.FuelType}}</span>
-              </article>
-
-              <article class="specs__profile">
-                <span class="specs__name">No. of cylinder</span>
-                <span class="specs__value">{{i.NoOfCylinders}}</span>
-              </article>
-
-              <article class="specs__profile">
-                <span class="specs__name">Transmission Type</span>
-                <span class="specs__value">{{i.TransmissionType}}</span>
-              </article>
-
-              <article class="specs__profile">
-                <span class="specs__name">Fuel Tank Capacity</span>
-                <span class="specs__value">{{i.FuelCapacity}} L</span>
-              </article>
-
-              <article class="specs__profile">
-                <span class="specs__name">Service Cost (Avg. of 5 years)</span>
-                <span class="specs__value">Rs. {{i.ServiceCost}}</span>
-              </article>
-            </main>
-          </article>
-        </div>
-      </div>
-
-      <footer>
-        <span
-          >Design By
-          <a href="https://www.linkedin.com/in/swastik-raj-singh-80ba881b8/"
-            >Swastik - Subhassini</a
-          >
-          | <span class="far fa-copyright"></span> 2022 All rights
-          reserved.</span
-        >
-      </footer>
+<body id="specs">
+  {% for i in vehicle %}
+  <div class="container">
+    <div class="scroll-up-btn">
+      <i class="fas fa-angle-up"></i>
     </div>
-    {% endfor %}
-    <script src="{% static '/js/script.js' %}"></script>
-  </body>
+    <nav class="navbar">
+      <div class="max-width">
+        <div class="logo">
+          <a href="{% url 'Home Page' %}">Car Showroom Management System</a>
+        </div>
+        <ul class="menu">
+          <li>
+            <a id="abt" href="{% url 'Home Page' %}" class="menu-btn">Home</a>
+          </li>
+          <li>
+            <a id="first" href="{% url 'About' %}" class="menu-btn">About Us</a>
+          </li>
+          <li>
+            <a href="{% url 'Contact' %}" class="menu-btn">Contact Us</a>
+          </li>
+          <li><a href="{% url 'Logout' %}" class="menu-btn">Logout</a></li>
+        </ul>
+        <div class="menu-btn">
+          <i class="fas fa-bars"></i>
+        </div>
+      </div>
+    </nav>
+    <section class="buy_car">
+      <div class="max-width">
+        <div class="buy_main">
+          <div class="car_img">
+            <img src="data:;base64,{{i.Image}}" alt="" />
+          </div>
+          <div class="car_data">
+            <h2>{{i.CarID.BBrandID.BrandName}} {{i.CarID.BCarName}}</h2>
+            <div class="rating">
+              <span class="fa fa-star checked"></span>
+              <span class="fa fa-star checked"></span>
+              <span class="fa fa-star checked"></span>
+              <span class="fa fa-star"></span>
+              <span class="fa fa-star"></span>
+            </div>
+            <h1>{{i.Price}} Lakhs</h1>
+            <div class="car_btns">
+              <a href="#spec">View Specs</a>
+              <form action="{% url 'BuyDump' %}" method="post">
+                {% csrf_token %}
+                <input type="hidden" name="cid" id="cid" value="{{i.CarID.BCarID}}" />
+
+                <input type="submit" value="Book" />
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <div class="specs_main" id="spec">
+      <div class="specs_title">
+        <h2>Key Specifications</h2>
+      </div>
+      <div class="specs_container">
+        <article class="specs">
+          <main class="specs__content">
+            <article class="specs__profile">
+              <span class="specs__name">ARAI Mileage</span>
+              <span class="specs__value">{{i.Mileage}} kmpl</span>
+            </article>
+
+            <article class="specs__profile">
+              <span class="specs__name">Engine Displacement</span>
+              <span class="specs__value">{{i.CC}} cc</span>
+            </article>
+
+            <article class="specs__profile">
+              <span class="specs__name">Seating Capacity</span>
+              <span class="specs__value">{{i.SeatingCapacity}}</span>
+            </article>
+
+            <article class="specs__profile">
+              <span class="specs__name">Boot Space</span>
+              <span class="specs__value">{{i.Bootspace}} L</span>
+            </article>
+
+            <article class="specs__profile">
+              <span class="specs__name">Body Type</span>
+              <span class="specs__value">{{i.BodyType}}</span>
+            </article>
+          </main>
+        </article>
+
+        <article class="specs">
+          <main class="specs__content">
+            <article class="specs__profile">
+              <span class="specs__name">Fuel Type</span>
+              <span class="specs__value">{{i.FuelType}}</span>
+            </article>
+
+            <article class="specs__profile">
+              <span class="specs__name">No. of cylinder</span>
+              <span class="specs__value">{{i.NoOfCylinders}}</span>
+            </article>
+
+            <article class="specs__profile">
+              <span class="specs__name">Transmission Type</span>
+              <span class="specs__value">{{i.TransmissionType}}</span>
+            </article>
+
+            <article class="specs__profile">
+              <span class="specs__name">Fuel Tank Capacity</span>
+              <span class="specs__value">{{i.FuelCapacity}} L</span>
+            </article>
+
+            <article class="specs__profile">
+              <span class="specs__name">Service Cost (Avg. of 5 years)</span>
+              <span class="specs__value">Rs. {{i.ServiceCost}}</span>
+            </article>
+          </main>
+        </article>
+      </div>
+    </div>
+
+    <footer>
+      <span>Design By
+        <a href="https://www.linkedin.com/in/swastik-raj-singh-80ba881b8/">Swastik - Subhassini</a>
+        | <span class="far fa-copyright"></span> 2022 All rights
+        reserved.</span>
+    </footer>
+  </div>
+  {% endfor %}
+  <script src="{% static '/js/script.js' %}"></script>
+</body>
+
 </html>
