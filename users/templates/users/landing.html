@@ -23,7 +23,11 @@
                     <a href="{% url 'Home Page' %}">Car Showroom Management System</a>
                 </div>
                 <ul class="menu">
-                    <!-- <li><a id="abt" href="{% url 'Home Page' %}" class="menu-btn">Home</a></li> -->
+                    <li>
+                        {% if request.user.is_authenticated %}
+                        <a id="abt" href="{% url 'Home Page' %}" class="menu-btn">Home</a>
+                        {% endif %}
+                    </li>
                     <li><a id="first" href="{% url 'About' %}" class="menu-btn">About Us</a></li>
                     <li><a href="{% url 'Contact' %}" class="menu-btn">Contact Us</a></li>
                     <!-- <li><a href="{% url 'Login' %}" class="menu-btn">Login</a></li> -->
