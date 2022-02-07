@@ -1558,3 +1558,19 @@ footer span a:hover {
 .buy_success-content h3 {
   margin: 10px;
 }
+
+/* CONTACT SUCCESS PAGE */
+
+.contact_success {
+  background: url(/static/img/bg.png);
+  height: 93vh;
+}
+
+.contact_success_content {
+  text-align: center;
+  margin: 150px auto;
+}
+
+.contact_success_content h2 {
+  margin: 30px;
+}

@@ -84,9 +84,9 @@
               <h3>Fill out the form below and we'll get back to you!</h3>
             </div>
             <div class="row body">
-              <form action="#">
+              <form action="{% url 'Contact' %}" method="post">
+                {% csrf_token %}
                 <ul>
-
                   <li>
                     <p class="left">
                       <label for="first_name">First name <span class="req">*</span></label>
@@ -97,7 +97,6 @@
                       <input type="text" name="last_name" placeholder="Smith" />
                     </p>
                   </li>
-
                   <li>
                     <p class="left">
                       <label for="email">Email <span class="req">*</span></label>
@@ -105,7 +104,7 @@
                     </p>
                     <p class="pull-right">
                       <label for="mobile">Mobile <span class="req">*</span></label>
-                      <input type="tel" name="mobile" placeholder="+91 017 109 2000" required />
+                      <input type="tel" name="mobile" placeholder="017 109 2000" required />
                     </p>
                   </li>
                   <li>
@@ -115,12 +114,9 @@
                     <label for="comments">Leave a Message</label>
                     <textarea cols="46" rows="3" name="comments"></textarea>
                   </li>
-
                   <li>
                     <input class="btn btn-submit" type="submit" value="Submit" />
-                    <small>or press <strong>enter</strong></small>
                   </li>
-
                 </ul>
               </form>
             </div>

@@ -25,7 +25,19 @@ def about(request):
 
 
 def contact(request):
+    if request.method=='POST':
+        fname = request.POST['first_name']
+        lname = request.POST['last_name']
+        email = request.POST['email']
+        phone = request.POST['mobile']
+        message = request.POST['comments']
+        ins = Contact(CFname=fname,CLname=lname, CEmail=email, CPhone=phone, CMessage=message)
+        ins.save()  
+        return redirect('ContactSuccess')
     return render(request, 'users/contact.html')
+
+def contactsuccess(request):
+    return render(request, 'users/contact_success.html')
 
 
 def register(request):
