@@ -65,15 +65,14 @@
                     <i class="fas fa-lock"></i>
                     <input type="password" name="password" placeholder="Enter your password" required>
                   </div>
-                  
                   <div class="button input-box">
                     <input type="submit" value="Submit" value="Login">
                   </div>
-
-                  
-
-
-
+                  {% if messages %}
+                    {% for message in messages %}
+                      <div style="text-align: center; border-bottom: 3px solid black;">{{ message }}</div>
+                    {% endfor %}
+                  {% endif %}
                   <div class="text sign-up-text">Don't have an account? <a href="{% url 'Register' %}">Signup Now</a></div>
                 </div>
               </form>

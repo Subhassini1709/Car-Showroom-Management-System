@@ -148,6 +148,39 @@
             </div>
         </section>
 
+        <section class="fourth">
+            <div class="max-width">
+                <div class="fourth-content">
+                    <div class="slideshow-container" id="slide4">
+                        <div class="mySlides fade">
+                            <img src="{% static '/img/car7.jpg' %}" style="width: 100%" />
+                            <div class="caption">
+                                <h2 style="font-size: 28px;">Great Prices. Great Vehicles. Great Service!</h2>
+                                <a href="{% url 'UserRentForm' %}">Rent your Car</a>
+                            </div>
+                        </div>
+
+                        <div class="mySlides fade">
+                            <img src="{% static '/img/car8.jpg' %}" style="width: 100%" />
+                            <div class="caption">
+                            </div>
+                        </div>
+
+                        <div class="mySlides fade">
+                            <img src="{% static '/img/car9.jpg' %}" style="width: 100%" />
+                            <div class="caption">
+                                <h2>Time to upgrade. Best price guaranteed!</h2>
+                                <a href="{% url 'UserRentForm' %}">Rent your Car</a>
+                            </div>
+                        </div>
+
+                        <a class="prev" onclick="plusSlides(-1, this.parentNode)">&#10094;</a>
+                        <a class="next" onclick="plusSlides(1, this.parentNode)">&#10095;</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <footer>
             <span>Design By <a href="https://www.linkedin.com/in/swastik-raj-singh-80ba881b8/">Swastik - Subhassini</a>
                 | <span class="far fa-copyright"></span> 2022 All rights

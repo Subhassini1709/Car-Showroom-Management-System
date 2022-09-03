@@ -26,7 +26,9 @@ urlpatterns = [
 
     path('sell_form/', views.sellform, name='SellForm'),
     path('sell_success/', views.sellsuccess, name='SellSuccess'),
-    
+
+    path('userrent_form/', views.userrent, name = 'UserRentForm'),
+    path('userrent_success/', views.userrentsuccess, name='UserRentSuccess'),
 ]
 
 
