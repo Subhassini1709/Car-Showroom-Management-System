@@ -6,7 +6,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Sell Success</title>
+    <title>User Rent Success</title>
     <link rel="stylesheet" href="{% static '/css/style.css' %}" />
     <script src="https://kit.fontawesome.com/26719dd53c.js" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
@@ -39,18 +39,20 @@
                 <h3>Your Selling request has been raised and we'll get back to you soon.</h3>
                 <h3>Here are the request details</h3>
                 <div class="booking">
-                    {% for i in selldetail %}
+                    {% for i in userrentdetail %}
                     <div class="customer">
-                        <h2><span>Name:</span> {{i.SCustomerID.username}}</h2>
-                        <h2><span>Mobile:</span> {{i.SPhoneNum}}</h2>
-                        <h2><span>Name:</span> {{i.SCustomerID.email}}</h2>
-                        <h2><span>Address:</span> {{i.SAddress}}</h2>
+                        <h2><span>Name:</span> {{i.UCustomerID.username}}</h2>
+                        <h2><span>Rent ID:</span> {{i.id}}</h2>
+                        <h2><span>Mobile:</span> {{i.UPhoneNum}}</h2>
+                        <h2><span>Name:</span> {{i.UCustomerID.email}}</h2>
+                        <h2><span>Address:</span> {{i.UAddress}}</h2>
                     </div>
                     <div class="booking_details">
-                        <h2><span>Selling ID:</span> {{i.id}}</h2>
-                        <h2><span>Brand Name:</span> {{i.SBrandName}}</h2>
-                        <h2><span>Car Name:</span> {{i.SCarName}}</h2>
-                        <h2><span>Expected Price:</span> {{i.SCarPrice}}</h2>
+                        <h2><span>Brand Name:</span> {{i.UBrandName}}</h2>
+                        <h2><span>Car Name:</span> {{i.UCarName}}</h2>
+                        <h2><span>Rent Per Day:</span> {{i.URentPerDay}}</h2>
+                        <h2><span>Number of Days:</span> {{i.UNoOfDays}}</h2>
+                        <h2><span>Total Rent:</span> {{i.UTotalRent}}</h2>
                     </div>
                     {% endfor %}
                 </div>

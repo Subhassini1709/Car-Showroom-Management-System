@@ -70,6 +70,23 @@ class SellCar(models.Model):
     SPhoneNum = models.BigIntegerField()
     SAddress = models.TextField()
 
+class UserRent(models.Model):
+    UCustomerID = models.ForeignKey(User,on_delete=models.CASCADE)
+    UFromDate = models.DateField()
+    UToDate = models.DateField()
+    UNoOfDays = models.IntegerField()
+    UBrandName = models.CharField(max_length=100)
+    UCarName = models.CharField(max_length=100)
+    UKmRun = models.IntegerField()
+    UCarAge = models.IntegerField()
+    UFuel = models.CharField(max_length=100)
+    UMileage = models.FloatField()
+    USeatingCapacity = models.IntegerField()
+    URentPerDay = models.FloatField()
+    UTotalRent = models.FloatField()
+    UPhoneNum = models.BigIntegerField()
+    UAddress = models.TextField()
+
 class Contact(models.Model):
     CFname = models.CharField(max_length=100)
     CLname = models.CharField(max_length=100)

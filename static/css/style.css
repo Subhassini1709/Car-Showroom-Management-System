@@ -38,7 +38,9 @@ section {
 .navbar .logo a {
   color: cyan;
   font-size: 30px;
-  font-weight: 600;
+  font-weight: 300;
+  letter-spacing: 3px;
+  font-family:'Times New Roman', Times, serif;
   transition: all 0.3s ease;
 }
 .navbar .logo a:hover {
@@ -149,15 +151,27 @@ section {
 .main .main-content,
 .first .first-content,
 .second .second-content,
-.third .third-content {
+.third .third-content,
+.fourth .fourth-content {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
 }
 
+.main .title {
+  text-align: center;
+  letter-spacing: 2px;
+  text-decoration: underline;
+  text-decoration-color: crimson;
+  text-decoration-style: double;
+  font-size: 32px;
+  font-weight: 300;
+}
+
 .main,
-.second {
+.second,
+.fourth {
   background: url(/static/img/bg.png);
 }
 
@@ -263,13 +277,17 @@ section {
   }
 }
 
-.first img, .second img, .third img {
+.first img, .second img, .third img , .fourth img{
   object-fit: cover;
   width: 500px;
   height: 300px;
 }
 
 /* LOGIN STYLES */
+
+.message {
+  text-align: center;
+}
 
 .form-container {
   min-height: 92.2vh;
@@ -452,9 +470,6 @@ section {
   .form-content .signup-form {
     width: 100%;
   }
-  .form-content .signup-form {
-    display: none;
-  }
   .form #flip:checked ~ .forms .signup-form {
     display: block;
   }
@@ -467,7 +482,7 @@ section {
 
 footer {
   background: #fff;
-  padding: 10px 23px;
+  padding: 10px;
   text-align: center;
   border-top: 5px solid crimson;
 }
@@ -721,7 +736,7 @@ footer span a:hover {
   font-size: 30px;
   font-weight: 300;
   text-decoration: underline;
-  text-decoration-color: crimson ;
+  text-decoration-color: crimson;
   text-decoration-thickness: 3px;
 }
 
@@ -801,7 +816,7 @@ footer span a:hover {
 
 .brands {
   background-color: black;
-  height: 92.5vh;
+  /* height: 92.5vh; */
 }
 
 .brands .title {
@@ -813,6 +828,13 @@ footer span a:hover {
   font-weight: 300;
   border-bottom: 3px solid crimson;
   color: white ;
+}
+
+.brands-content {
+  display: flex;
+  justify-content: space-around;
+  /* margin-top: 50px; */
+  flex-wrap: wrap;
 }
 
 .brand-item img:hover{
@@ -878,6 +900,7 @@ footer span a:hover {
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
+  justify-content: space-evenly;
   margin-top: -50px;
 }
 
@@ -1131,20 +1154,21 @@ footer span a:hover {
 }
 
 .specs_container {
-  margin: 0;
+  margin: 30px;
   display: grid;
   grid-template-columns: 3fr 3fr;
-  height: 80vh;
+  /* height: 80vh; */
   place-items: center;
   font-family: "Source Sans Pro", sans-serif;
 }
 
 .specs {
   box-shadow: 0 0 40px -10px rgba(0, 0, 0, 0.4);
+  margin: 20px;
 }
 
 .buy_main {
-  width: 80%;
+  /* width: 80%; */
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
@@ -1157,7 +1181,7 @@ footer span a:hover {
 
 .car_img {
   border-right: 3px solid crimson;
-  width: 60%;
+  /* width: 60%; */
   text-align: center;
 }
 
@@ -1166,9 +1190,9 @@ footer span a:hover {
 }
 
 .car_data {
-  width: 40%;
+  /* width: 40%; */
   text-align: center;
-  margin: 60px 0;
+  margin: 60px 20.5px;
 }
 
 .car_data h1{
@@ -1191,7 +1215,7 @@ footer span a:hover {
 .car_btns {
   display: flex;
   margin-top: 30px;
-  margin-left: 80px;
+  /* margin-left: 80px; */
 }
 
 .car_btns a, .car_btns input {
@@ -1214,6 +1238,7 @@ footer span a:hover {
   background-color: white;
   border: 2px solid crimson;
   display: flex;
+  flex-wrap: wrap;
   padding: 10px;
   text-align: left;
 }
@@ -1394,7 +1419,7 @@ footer span a:hover {
   margin: 0 0 0 0.5em;
 }
 
-@media only screen and (max-width: 480px) {
+@media only screen and (max-width: 504px) {
   .pull-right {
     float: none;
   }
@@ -1407,6 +1432,7 @@ footer span a:hover {
     width: 100%;
     float: left;
     clear: both;
+    right: 0 !important;
   }
 
   .rent li,
@@ -1437,7 +1463,7 @@ footer span a:hover {
   top: 20px;
   width: 100%;
   height: 100%;
-  overflow: hidden; /* Enable scroll if needed */
+  overflow-y: auto;
   background-color: rgb(0,0,0); /* Fallback color */
   background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
 }
@@ -1449,7 +1475,7 @@ footer span a:hover {
   margin: 100px auto;
   padding: 10px;
   border: 1px solid #888;
-  width: 60%;
+  width: 80%;
   text-align: center;
 }
 
@@ -1479,18 +1505,29 @@ footer span a:hover {
 }
 
 .landing_img {
-  width: 90%;
+  width: 100%;
   margin: 0 auto;
   text-align: center;
 }
 
+/* .landing_img img {
+  width: 1000px;
+  height: 70vh;
+} */
+
+#landing .home-content h2{
+  margin: 10px;
+}
+
 .home-content h2{
   text-align: center;
-  margin: 10px;
+  margin: 0;
+  font-weight: 400;
 }
 
 #landing .brands {
   padding: 50px 0 20px 0;
+  height: 60vh;
 }
 
 #landing .cars {
@@ -1573,4 +1610,220 @@ footer span a:hover {
 
 .contact_success_content h2 {
   margin: 30px;
+}
+
+/* responsive media query start */
+@media (max-width: 1300px) {
+  .home .max-width {
+    margin-left: 0px;
+  }
+}
+@media (max-width: 1060px) {
+  .line1 {
+    width: 600px !important;
+  }
+  .contact1 h1 {
+    font-size: 32px;
+  }
+  .specs_container {
+    grid-template-columns: 3fr;
+  }
+}
+@media (max-width: 991px) {
+  .max-width {
+    padding: 0 30px;
+  }
+  .first,.second,.third, .fourth { 
+    padding: 30px;
+  }
+  .slideshow-container{
+    width: 100%;
+  }
+}
+@media (max-width: 953px) {
+  .customer {
+    border-bottom: 3px solid crimson;
+    border-right: none !important;
+  }
+  .customer {
+    width: 100% !important;
+  }
+  .booking_details {
+    width: 100% !important;
+  }
+  .rent_success-content h2{
+    font-size: 22px;
+  }
+  .rent_success-content h3{
+    font-size: 18px;
+  }
+}
+@media (max-width: 947px) {
+  .menu-btn {
+    display: block;
+    z-index: 999;
+  }
+  .menu-btn i:hover {
+    transform: scale(1.2);
+    color: cyan;
+  }
+  .menu-btn i.active:before {
+    content: "\f00d";
+    color: crimson;
+  }
+  .navbar .menu {
+    position: fixed;
+    height: 100vh;
+    width: 100%;
+    left: -100%;
+    top: 0;
+    background: #111;
+    text-align: center;
+    padding-top: 80px;
+    transition: all 0.3s ease;
+  }
+  .navbar .menu.active {
+    left: 0;
+  }
+  .navbar .menu li {
+    display: block;
+  }
+  .navbar .menu li a {
+    display: inline-block;
+    margin: 20px 0;
+    font-size: 25px;
+    color: cyan;
+  }
+  .navbar .menu li a:hover, .navbar.sticky .menu li a:hover {
+    color: crimson;
+  }
+  .navbar.sticky {
+    opacity: 1;
+  }
+  .active {
+    color: crimson !important;
+  }
+  .car_img {
+    border-right: 3px solid white;
+    border-bottom: 3px solid crimson;
+  }
+  .buy_main {
+    margin-bottom: -100px;
+  }
+  .car_data {
+    margin: 30px 20.5px 20px 20.5px;
+  }
+}
+@media (max-width: 944px) {
+  .car_img {
+    border-right: none;
+  }
+}
+@media (max-width: 690px) {
+  .max-width {
+    padding: 0 23px;
+  }
+  .first,.second,.third,.fourth { 
+    padding: 20px 10px;
+  }
+  .line1 {
+    width: 400px !important;
+  }
+  .line1 .email{
+    text-align: left;
+  }
+  .booking h2 {
+    font-size: 20px;
+  }
+  .rent_success-content {
+    width: 90%;
+  }
+  .car_img img{
+    width: 420px;
+  }
+  .buy_main {
+    padding: 15px;
+  }
+  .car_data h2 {
+    font-size: 26px;
+  }
+  .car_data h1 {
+    font-size: 32px;
+  }
+}
+
+@media (max-width: 500px) {
+  .scroll-up-btn {
+    right: 15px;
+    bottom: 15px;
+    height: 38px;
+    width: 35px;
+    font-size: 23px;
+    line-height: 38px;
+  }
+  .line1 {
+    width: 300px !important;
+  }
+  .contact1 h1 {
+    font-size: 22px;
+  }
+  .booking h2 {
+    font-size: 17px;
+  }
+  .rent_success-content {
+    width: 95%;
+  }
+  .rent_success-content h2{
+    font-size: 18px;
+  }
+  .rent_success-content h3{
+    font-size: 16px;
+  }
+  .specs__name {
+    font-size: 14px;
+  }
+  .specs__value {
+    font-size: 18px;
+  }
+  .specs__content {
+    padding: 10px 15px;
+  }
+  .car_img img{
+    width: 260px;
+  }
+  .car_data h2 {
+    font-size: 22px;
+  }
+  .car_data h1 {
+    font-size: 28px;
+  }
+  .car_data .rating {
+    margin: 20px 0;
+  }
+  .car_btns a, .car_btns input{
+    font-size: 18px;
+    margin: 4px;
+  }
+  .buy_main {
+    margin: 0px auto -120px auto;
+  }
+}
+@media (max-width: 326px) {
+  .navbar .logo a{
+    font-size: 30px;
+  }
+}
+
+[data-scroll] {
+  transition: all 1s ease-out;
+}
+
+[data-scroll="in"] {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+[data-scroll="out"] {
+  opacity: 0;
+  transform: translateX(-300px);
 }
