@@ -10,6 +10,21 @@ from django.contrib import messages
 from users.models import *
 from base64 import b64encode
 
+import datetime
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+from sklearn.model_selection import train_test_split
+from sklearn.linear_model import LinearRegression
+from sklearn.ensemble import RandomForestRegressor
+from sklearn.preprocessing import StandardScaler
+from sklearn.metrics import r2_score
+from sklearn.preprocessing import OneHotEncoder
+from sklearn.compose import make_column_transformer
+from sklearn.pipeline import make_pipeline
+
 
 @login_required(login_url='Login')
 def home(request):
@@ -207,64 +222,55 @@ def sellform(request):
     return render(request, 'users/sell_form.html')
 
 def userrent(request):
+    dataset = pd.read_csv(r"C:\Users\Subhassini Sridharan\Desktop\Subhassini\Projects\CarifyRent.csv")
+    make_train = dataset["name"].str.split(" ", expand = True)
+    man = make_train[0];
+    dataset.insert(0,"manufacturer",man)
+    dataset.drop("name", axis = 1, inplace = True)
+    curr_time = datetime.datetime.now()
+    dataset['year'] = dataset['year'].apply(lambda x : curr_time.year - x)
+    mileage_train = dataset["mileage"].str.split(" ", expand = True)
+    dataset["mileage"] = pd.to_numeric(mileage_train[0], errors = 'coerce')
+    dataset["mileage"].fillna(dataset["mileage"].astype("float64").mean(), inplace = True)
+    dataset["seats"].fillna(dataset["seats"].astype("float64").mean(), inplace = True)
+    ohe=OneHotEncoder()
+    ohe.fit(dataset[['manufacturer','fuel','transmission']])
+    column_trans=make_column_transformer((OneHotEncoder(categories=ohe.categories_),['manufacturer','fuel','transmission']),remainder='passthrough')
+    X_train, X_test, y_train, y_test = train_test_split(dataset.iloc[:, :-1], 
+                                                    dataset.iloc[:, -1], 
+                                                    test_size = 0.1, 
+                                                    random_state = 42)
+    missing_cols = set(X_train.columns) - set(X_test.columns)
+    for col in missing_cols:
+        X_test[col] = 0
+    X_test = X_test[X_train.columns]
+    rf = RandomForestRegressor(n_estimators = 100)
+    pipe = make_pipeline(column_trans,rf)
+    pipe.fit(X_train, y_train)
+    
+    
     if request.method == "POST":
-        customerid = request.user
+        customerId = request.user
         brand = request.POST['brand']
         carname = request.POST['carname']
-        noofdays = int(request.POST['noofdays'])
+        noOfDays = int(request.POST['noofdays'])
         km = request.POST['km']
         age = request.POST['age']
         fuel = request.POST['fuel']
         mileage = float(request.POST['mileage'])
-        seating = int(request.POST['seating'])
-        fromdate = request.POST['fromdate']
-        todate = request.POST['todate']
+        seating = float(request.POST['seating'])
+        transmission = request.POST['transmission']
+        fromDate = request.POST['fromdate']
+        toDate = request.POST['todate']
         phone = request.POST['phone']
         address = request.POST['address']
 
-        if fuel == "Diesel":
-            if seating > 5:
-                if mileage > 20:
-                    rentperday = 2000
-                elif mileage > 18:
-                    rentperday = 1800
-                elif mileage > 14:
-                    rentperday = 1500
-                else:
-                    rentperday = 1000
-            elif seating <= 5:
-                if mileage > 20:
-                    rentperday = 1000
-                elif mileage > 18:
-                    rentperday = 900
-                elif mileage > 14:
-                    rentperday = 750
-                else:
-                    rentperday = 300
-        if fuel == "Petrol":
-            if seating > 5:
-                if mileage > 20:
-                    rentperday = 3000
-                elif mileage > 18:
-                    rentperday = 2800
-                elif mileage > 14:
-                    rentperday = 2500
-                else:
-                    rentperday = 2000
-            elif seating <= 5:
-                if mileage > 20:
-                    rentperday = 1500
-                elif mileage > 18:
-                    rentperday = 1400
-                elif mileage > 14:
-                    rentperday = 1200
-                else:
-                    rentperday = 800
-        else:
-            rentperday = 0
-        totalrent = float(rentperday) * noofdays
-        ins = UserRent(UCustomerID=customerid, UBrandName=brand, UCarName=carname, UNoOfDays=noofdays, UKmRun=km,
-                      UCarAge=age, UFuel=fuel, UMileage=mileage, USeatingCapacity=seating, UFromDate=fromdate, UToDate=todate, UPhoneNum=phone, UAddress=address, URentPerDay=rentperday, UTotalRent=totalrent)
+        rentPerDay = pipe.predict(pd.DataFrame(columns=['manufacturer','year','km_driven','fuel','transmission','mileage','seats'],data=np.array([brand,age,km,fuel,transmission,mileage,seating]).reshape(1,7)))
+        rentPerDay = round(rentPerDay[0])
+
+        totalRent = rentPerDay * noOfDays
+        ins = UserRent(UCustomerID=customerId, UBrandName=brand, UCarName=carname, UNoOfDays=noOfDays, UKmRun=km,
+                      UCarAge=age, UFuel=fuel, UMileage=mileage, USeatingCapacity=seating, UFromDate=fromDate, UToDate=toDate, UPhoneNum=phone, UAddress=address, URentPerDay=rentPerDay, UTotalRent=totalRent)
         ins.save()
         return redirect('UserRentSuccess')
     return render(request, 'users/userrent_form.html')
