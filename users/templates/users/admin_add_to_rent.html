@@ -1,0 +1,117 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add to Rent</title>
+    <link rel="stylesheet" href="{% static '/css/style.css' %}" />
+</head>
+
+<body>
+    <div class="container">
+        <div class="scroll-up-btn">
+            <i class="fas fa-angle-up"></i>
+        </div>
+        <nav class="navbar">
+            <div class="max-width">
+                <div class="logo">
+                    <a href="{% url 'Home Page' %}">CARIFY</a>
+                </div>
+                <ul class="menu">
+                    <li>
+                        {% if request.user.is_authenticated %}
+                        <a id="abt" href="{% url 'Home Page' %}" class="menu-btn">Home</a>
+                        {% else %}
+                        <a id="abt" href="{% url 'Landing' %}" class="menu-btn">Home</a>
+                        {% endif %}
+                    </li>
+                    <li><a id="first" href="{% url 'About' %}" class="menu-btn active">About Us</a></li>
+                    <li><a href="{% url 'Contact' %}" class="menu-btn">Contact Us</a></li>
+                    <li>
+                        {% if request.user.is_authenticated %}
+                        <a href="{% url 'Logout' %}" class="menu-btn">Logout</a>
+                        {% else %}
+                        <a href="{% url 'Login' %}" class="menu-btn">Login</a>
+                        {% endif %}
+                    </li>
+                </ul>
+                <div class="menu-btn">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </div>
+        </nav>
+
+        <section class="rent">
+            <div class="max-width">
+                <div class="rent-content">
+                    <div class="rent-form">
+                        <div class="row header">
+                            <h1>ADD TO RENT &nbsp;</h1>
+                        </div>
+                        <div class="row body">
+                            <form action="{% url 'AdminRent' %}" method="post" enctype="multipart/form-data">
+                                {% csrf_token %}
+                                <ul>
+                                    <li>
+                                        <p class="left">
+                                            <label for="carid">Car Id</label>
+                                            <input type="text" name="carid" placeholder="123" required>
+                                        </p>
+                                        <p class="pull-right">
+                                            <label for="carname">Car Name</label>
+                                            <input type="text" name="carname" placeholder="Triber" required />
+                                        </p>
+                                    </li>
+                                    <li>
+                                        <p class="left">
+                                            <label for="image">Car Image</label>
+                                            <input type="file" name="image" required />
+                                        </p>
+                                        <p class="pull-right">
+                                            <label for="price">Car Price</label>
+                                            <input type="text" name="price" placeholder="40000" required>
+                                        </p>
+                                    </li>
+                                    <li>
+                                        <p class="left">
+                                            <label for="fuel">Fuel Type</label>
+                                            <input type="text" name="fuel" placeholder="Petrol" required />
+                                        </p>
+                                        <p class="pull-right">
+                                            <label for="mileage">Car Mileage</label>
+                                            <input type="text" name="mileage" placeholder="16" required>
+                                        </p>
+                                    </li>
+                                    <li>
+                                        <p class="left">
+                                            <label for="seating">Seating Capacity</label>
+                                            <input type="text" name="seating" placeholder="5" required />
+                                        </p>
+                                    </li>
+                                    <li>
+                                        <div class="divider"></div>
+                                    </li>
+                                    <li>
+                                        <input class="btn btn-submit" type="submit" value="Submit" />
+                                    </li>
+                                </ul>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            <span>Design By <a href="https://www.linkedin.com/in/swastik-raj-singh-80ba881b8/">Swastik - Subhassini</a>
+                | <span class="far fa-copyright"></span> 2022 All rights
+                reserved.</span>
+        </footer>
+    </div>
+    <script src="{% static '/js/script.js' %}"></script>
+</body>
+
+</html>

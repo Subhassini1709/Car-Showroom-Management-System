@@ -1,0 +1,74 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Show Rent Cars</title>
+    <link rel="stylesheet" href="{% static '/css/style.css' %}" />
+    <script src="https://kit.fontawesome.com/26719dd53c.js" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+</head>
+
+<body id="rent">
+    <div class="container">
+        <div class="scroll-up-btn">
+            <i class="fas fa-angle-up"></i>
+        </div>
+        <nav class="navbar">
+            <div class="max-width">
+                <div class="logo">
+                    <a href="{% url 'Home Page' %}">CARIFY</a>
+                </div>
+                <ul class="menu">
+                    <li><a id="abt" href="{% url 'Home Page' %}" class="menu-btn">Home</a></li>
+                    <li><a id="first" href="{% url 'About' %}" class="menu-btn">About Us</a></li>
+                    <li><a href="{% url 'Contact' %}" class="menu-btn">Contact Us</a></li>
+                    <li><a href="{% url 'Logout' %}" class="menu-btn">Logout</a></li>
+                </ul>
+                <div class="menu-btn">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </div>
+        </nav>
+        <div class="rent-container">
+            <div class="rent_cars">
+                {% for i in vehicles %}
+                <div class="card">
+                    <div class="face face1">
+                        <div class="content">
+                            <div class="delbtn">
+                                <a href="/admin_delete_rent/{{i.RCarID}}">Remove Request</a>
+                            </div>
+                            <div class="carname">
+                                <h2>{{i.RCarName}}</h3>
+                            </div>
+                            <h2>Features</h2>
+                            <ul>
+                                <li>{{i.RFuel}}</li>
+                                <li>{{i.RMileage}} Km/L Mileage</li>
+                                <li>{{i.RSeatingCapacity}}-Seater</li>
+                            </ul>
+                            <h2>Price: <span>Rs 5000 / day</span></h2>
+                        </div>
+                    </div>
+                    <!-- <div class="face face2" style="background: url('data:;base64,{{i.RImage}}');"></div> -->
+                    <div class="face face2" style="background: url('{{ i.RImage.url }}');"></div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        <!-- <div class="rent_btn">
+            <a href="{% url 'RentForm' %}">Rent a Car</a>
+        </div> -->
+        <footer>
+            <span>Design By <a href="https://www.linkedin.com/in/swastik-raj-singh-80ba881b8/">Swastik - Subhassini</a>
+                | <span class="far fa-copyright"></span> 2022 All rights
+                reserved.</span>
+        </footer>
+    </div>
+    <script src="{% static '/js/script.js' %}"></script>
+  </body>
+</html>

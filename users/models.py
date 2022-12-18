@@ -1,6 +1,12 @@
-from distutils.command.upload import upload
 from django.db import models
 from django.contrib.auth.models import User
+import os, datetime
+
+def filepath(request, filename):
+    old_filename = filename
+    timeNow = datetime.datetime.now().strftime('%Y%m%d%H%M%S')
+    filename = "%s%s" % (timeNow, old_filename)
+    return os.path.join('uploads/', filename)
 
 class BuyBrand(models.Model):
     BrandID = models.CharField(max_length=100, primary_key=True)
@@ -40,7 +46,8 @@ class BuyBooking(models.Model):
 class RentCar(models.Model):
     RCarID = models.CharField(max_length=100,primary_key=True)
     RCarName = models.CharField(max_length=100)
-    RImage = models.BinaryField()
+    # RImage = models.BinaryField()
+    RImage = models.ImageField(upload_to=filepath, null=True, blank=True)
     RCarPrice = models.IntegerField()
     RFuel = models.CharField(max_length=100)
     RMileage = models.FloatField()
@@ -69,6 +76,7 @@ class SellCar(models.Model):
     SSeatingCapacity = models.IntegerField()
     SPhoneNum = models.BigIntegerField()
     SAddress = models.TextField()
+    SImage = models.ImageField(upload_to=filepath, null=True, blank=True)
 
 class UserRent(models.Model):
     UCustomerID = models.ForeignKey(User,on_delete=models.CASCADE)
@@ -86,6 +94,7 @@ class UserRent(models.Model):
     UTotalRent = models.FloatField()
     UPhoneNum = models.BigIntegerField()
     UAddress = models.TextField()
+    UImage = models.ImageField(upload_to=filepath, null=True, blank=True)
 
 class Contact(models.Model):
     CFname = models.CharField(max_length=100)
