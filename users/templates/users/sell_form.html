@@ -43,7 +43,7 @@
               <h3>Fill out the form below and we'll get back to you!</h3>
             </div>
             <div class="row body">
-              <form action="{% url 'SellForm' %}" method="post">
+              <form action="{% url 'SellForm' %}" method="post" enctype="multipart/form-data">
                 {% csrf_token %}
                 <ul>
                   <li>
@@ -94,6 +94,12 @@
                     <p class="pull-right">
                       <label for="address">Enter your address</label>
                       <input type="text" name="address" placeholder="Bangalore" required />
+                    </p>
+                  </li>
+                  <li>
+                    <p class="left">
+                      <label for="image">Enter Car Image</label>
+                      <input type="file" name="image" required />
                     </p>
                   </li>
                   <li>

@@ -43,7 +43,7 @@
               <h3>Fill out the form below and we'll get back to you!</h3>
             </div>
             <div class="row body">
-              <form action="{% url 'UserRentForm' %}" method="post">
+              <form action="{% url 'UserRentForm' %}" method="post" enctype="multipart/form-data">
                 {% csrf_token %}
                 <ul>
                   <li>
@@ -91,6 +91,10 @@
                       <label for="transmission">Transmission Type</label>
                       <input type="text" name="transmission" placeholder="Manual" required>
                     </p>
+                    <p class="pull-right">
+                      <label for="image">Image</label>
+                      <input type="file" name="image" accept="image/*" required />
+                  </p>
                     
                   </li>
                   <li>

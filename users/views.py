@@ -8,7 +8,7 @@ from django.contrib.auth.models import User
 from .forms import CreateUserForm
 from django.contrib import messages
 from users.models import *
-from base64 import b64encode
+from base64 import b64decode, b64encode
 
 import datetime
 import numpy as np
@@ -28,7 +28,10 @@ from sklearn.pipeline import make_pipeline
 
 @login_required(login_url='Login')
 def home(request):
-    return render(request, 'users/index.html')
+    if request.user.is_superuser:
+        return render(request, 'users/admin_home.html')
+    else:
+        return render(request, 'users/index.html')
 
 
 def landing(request):
@@ -84,7 +87,8 @@ def register(request):
 def loginPage(request):
     if request.user.is_authenticated:
         if UserModel.is_superuser or UserModel.is_staff:
-            return redirect('/admin/')
+            # return redirect('/admin/')
+            return redirect('AdminHome')
         else:
             return redirect('Home Page')
     else:
@@ -96,7 +100,8 @@ def loginPage(request):
             if user is not None:
                 if user.is_superuser or user.is_staff:
                     login(request, user)
-                    return redirect('/admin/')
+                    # return redirect('/admin/')
+                    return redirect('AdminHome')
                 else:
                     login(request, user)
                     return redirect('Home Page')
@@ -171,8 +176,8 @@ def buysuccess(request):
 
 def rent(request):
     vehicles = RentCar.objects.all()
-    for i in vehicles:
-        i.RImage = b64encode(i.RImage).decode()
+    # for i in vehicles:
+    #     i.RImage = b64encode(i.RImage).decode()
     return render(request, 'users/rent.html', {'vehicles': vehicles})
 
 
@@ -215,63 +220,79 @@ def sellform(request):
         seating = request.POST['seating']
         phone = request.POST['phone']
         address = request.POST['address']
+        if len(request.FILES) != 0:
+            image = request.FILES['image']
         ins = SellCar(SCustomerID=customerid, SBrandName=brand, SCarName=carname, SCarPrice=price, KmRun=km,
-                      CarAge=age, SFuel=fuel, SMileage=mileage, SSeatingCapacity=seating, SPhoneNum=phone, SAddress=address)
+                      CarAge=age, SFuel=fuel, SMileage=mileage, SSeatingCapacity=seating, SPhoneNum=phone, SAddress=address, SImage=image)
         ins.save()
         return redirect('SellSuccess')
     return render(request, 'users/sell_form.html')
 
+
+def sellsuccess(request):
+    sellid = SellCar.objects.order_by('-id')[0]
+    selldetails = SellCar.objects.all()
+    selldetail = selldetails.filter(id=sellid.id)
+    return render(request, 'users/sell_success.html', {'selldetail': selldetail})
+
+
 def userrent(request):
-    dataset = pd.read_csv(r"C:\Users\Subhassini Sridharan\Desktop\Subhassini\Projects\CarifyRent.csv")
-    make_train = dataset["name"].str.split(" ", expand = True)
-    man = make_train[0];
-    dataset.insert(0,"manufacturer",man)
-    dataset.drop("name", axis = 1, inplace = True)
+    dataset = pd.read_csv(r"D:\CarifyRent.csv")
+    make_train = dataset["name"].str.split(" ", expand=True)
+    man = make_train[0]
+    dataset.insert(0, "manufacturer", man)
+    dataset.drop("name", axis=1, inplace=True)
     curr_time = datetime.datetime.now()
-    dataset['year'] = dataset['year'].apply(lambda x : curr_time.year - x)
-    mileage_train = dataset["mileage"].str.split(" ", expand = True)
-    dataset["mileage"] = pd.to_numeric(mileage_train[0], errors = 'coerce')
-    dataset["mileage"].fillna(dataset["mileage"].astype("float64").mean(), inplace = True)
-    dataset["seats"].fillna(dataset["seats"].astype("float64").mean(), inplace = True)
-    ohe=OneHotEncoder()
-    ohe.fit(dataset[['manufacturer','fuel','transmission']])
-    column_trans=make_column_transformer((OneHotEncoder(categories=ohe.categories_),['manufacturer','fuel','transmission']),remainder='passthrough')
-    X_train, X_test, y_train, y_test = train_test_split(dataset.iloc[:, :-1], 
-                                                    dataset.iloc[:, -1], 
-                                                    test_size = 0.1, 
-                                                    random_state = 42)
+    dataset['year'] = dataset['year'].apply(lambda x: curr_time.year - x)
+    mileage_train = dataset["mileage"].str.split(" ", expand=True)
+    dataset["mileage"] = pd.to_numeric(mileage_train[0], errors='coerce')
+    dataset["mileage"].fillna(
+        dataset["mileage"].astype("float64").mean(), inplace=True)
+    dataset["seats"].fillna(dataset["seats"].astype(
+        "float64").mean(), inplace=True)
+    ohe = OneHotEncoder()
+    ohe.fit(dataset[['manufacturer', 'fuel', 'transmission']])
+    column_trans = make_column_transformer((OneHotEncoder(categories=ohe.categories_), [
+                                           'manufacturer', 'fuel', 'transmission']), remainder='passthrough')
+    X_train, X_test, y_train, y_test = train_test_split(dataset.iloc[:, :-1],
+                                                        dataset.iloc[:, -1],
+                                                        test_size=0.1,
+                                                        random_state=42)
     missing_cols = set(X_train.columns) - set(X_test.columns)
     for col in missing_cols:
         X_test[col] = 0
     X_test = X_test[X_train.columns]
-    rf = RandomForestRegressor(n_estimators = 100)
-    pipe = make_pipeline(column_trans,rf)
+    rf = RandomForestRegressor(n_estimators=100)
+    pipe = make_pipeline(column_trans, rf)
     pipe.fit(X_train, y_train)
-    
-    
+
     if request.method == "POST":
         customerId = request.user
+        fromDate = request.POST['fromdate']
+        toDate = request.POST['todate']
+        noOfDays = int(request.POST['noofdays'])
         brand = request.POST['brand']
         carname = request.POST['carname']
-        noOfDays = int(request.POST['noofdays'])
         km = request.POST['km']
         age = request.POST['age']
         fuel = request.POST['fuel']
         mileage = float(request.POST['mileage'])
         seating = float(request.POST['seating'])
         transmission = request.POST['transmission']
-        fromDate = request.POST['fromdate']
-        toDate = request.POST['todate']
         phone = request.POST['phone']
         address = request.POST['address']
+        if len(request.FILES) != 0:
+            image = request.FILES['image']
 
-        rentPerDay = pipe.predict(pd.DataFrame(columns=['manufacturer','year','km_driven','fuel','transmission','mileage','seats'],data=np.array([brand,age,km,fuel,transmission,mileage,seating]).reshape(1,7)))
+        rentPerDay = pipe.predict(pd.DataFrame(columns=['manufacturer', 'year', 'km_driven', 'fuel', 'transmission', 'mileage', 'seats'], data=np.array(
+            [brand, age, km, fuel, transmission, mileage, seating]).reshape(1, 7)))
         rentPerDay = round(rentPerDay[0])
 
         totalRent = rentPerDay * noOfDays
         ins = UserRent(UCustomerID=customerId, UBrandName=brand, UCarName=carname, UNoOfDays=noOfDays, UKmRun=km,
-                      UCarAge=age, UFuel=fuel, UMileage=mileage, USeatingCapacity=seating, UFromDate=fromDate, UToDate=toDate, UPhoneNum=phone, UAddress=address, URentPerDay=rentPerDay, UTotalRent=totalRent)
+                       UCarAge=age, UFuel=fuel, UMileage=mileage, USeatingCapacity=seating, UFromDate=fromDate, UToDate=toDate, UPhoneNum=phone, UAddress=address, URentPerDay=rentPerDay, UTotalRent=totalRent, UImage=image)
         ins.save()
+
         return redirect('UserRentSuccess')
     return render(request, 'users/userrent_form.html')
 
@@ -282,8 +303,64 @@ def userrentsuccess(request):
     userrentdetail = userrentdetails.filter(id=userrentid.id)
     return render(request, 'users/userrent_success.html', {'userrentdetail': userrentdetail})
 
-def sellsuccess(request):
-    sellid = SellCar.objects.order_by('-id')[0]
-    selldetails = SellCar.objects.all()
-    selldetail = selldetails.filter(id=sellid.id)
-    return render(request, 'users/sell_success.html', {'selldetail': selldetail})
+
+def adminhome(request):
+    return render(request, 'users/admin_home.html')
+
+
+def adminaddtorent(request):
+    if request.method == 'POST':
+        carid = request.POST['carid']
+        carname = request.POST['carname']
+        if len(request.FILES) != 0:
+            image = request.FILES['image']
+        price = request.POST['price']
+        fuel = request.POST['fuel']
+        mileage = request.POST['mileage']
+        seating = request.POST['seating']
+        ins = RentCar(RCarID=carid, RCarName=carname, RImage=image, RCarPrice=price, RFuel=fuel,
+                      RMileage=mileage, RSeatingCapacity=seating)
+        ins.save()
+        return redirect('ShowRent')
+    return render(request, 'users/admin_add_to_rent.html')
+
+
+def adminshowrent(request):
+    vehicles = RentCar.objects.all()
+    return render(request, 'users/admin_show_rent.html', {'vehicles': vehicles})
+
+
+def deleterent(request, id):
+    req = RentCar.objects.get(RCarID=id)
+    req.delete()
+    # messages.success('Request deleted successfully')
+    return redirect('ShowRent')
+
+
+def adminshowrentrequests(request):
+    entries = UserRent.objects.all()
+    return render(request, 'users/admin_show_rent_requests.html', {'entries': entries})
+
+
+def deleterentrequest(request, id):
+    req = UserRent.objects.get(id=id)
+    req.delete()
+    # messages.success('Request deleted successfully')
+    return redirect('ShowRentRequests')
+
+
+def adminshowsellrequests(request):
+    entries = SellCar.objects.all()
+    return render(request, 'users/admin_show_sell_requests.html', {'entries': entries})
+
+
+def deletesellrequest(request, id):
+    req = SellCar.objects.get(id=id)
+    req.delete()
+    # messages.success(request, 'Request deleted successfully')
+    return redirect('ShowSellRequests')
+
+
+def adminshowcontactrequests(request):
+    entries = Contact.objects.all()
+    return render(request, 'users/admin_show_contact_requests.html', {'entries': entries})

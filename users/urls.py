@@ -29,6 +29,16 @@ urlpatterns = [
 
     path('userrent_form/', views.userrent, name = 'UserRentForm'),
     path('userrent_success/', views.userrentsuccess, name='UserRentSuccess'),
+
+    path('admin_home/', views.adminhome, name='AdminHome'),
+    path('admin_add_to_rent/', views.adminaddtorent, name='AdminRent'),
+    path('admin_show_rent/', views.adminshowrent, name='ShowRent'),
+    path('admin_delete_rent/<int:id>', views.deleterent),
+    path('admin_show_rent_requests/', views.adminshowrentrequests, name='ShowRentRequests'),
+    path('admin_delete_rent_request/<int:id>', views.deleterentrequest),
+    path('admin_show_sell_requests/', views.adminshowsellrequests, name='ShowSellRequests'),
+    path('admin_delete_sell_request/<int:id>', views.deletesellrequest),
+    path('admin_show_contact_requests/', views.adminshowcontactrequests, name='ShowContactRequests'),
 ]
 
 

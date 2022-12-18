@@ -52,7 +52,8 @@
                             <h2>Price: <span>Rs 5000 / day</span></h2>
                         </div>
                     </div>
-                    <div class="face face2" style="background: url('data:;base64,{{i.RImage}}');"></div>
+                    <!-- <div class="face face2" style="background: url('data:;base64,{{i.RImage}}');"></div> -->
+                    <div class="face face2" style="background: url({{i.RImage.url}});"></div>
                 </div>
                 {% endfor %}
 

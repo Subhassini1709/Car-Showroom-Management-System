@@ -26,36 +26,44 @@ section {
   transition: all 0.3s ease;
   background-color: crimson;
 }
+
 .navbar.sticky {
   padding: 15px 0;
   opacity: 0.9;
 }
+
 .navbar .max-width {
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
+
 .navbar .logo a {
   color: cyan;
   font-size: 30px;
   font-weight: 300;
   letter-spacing: 3px;
-  font-family:'Times New Roman', Times, serif;
+  font-family: 'Times New Roman', Times, serif;
   transition: all 0.3s ease;
 }
+
 .navbar .logo a:hover {
   color: black;
 }
+
 .navbar.sticky .logo a {
   color: white;
 }
+
 .navbar.sticky .logo a:hover {
   color: black;
 }
+
 .navbar .menu li {
   list-style: none;
   display: inline-block;
 }
+
 .navbar .menu li a {
   display: block;
   color: #fff;
@@ -64,12 +72,15 @@ section {
   margin-left: 25px;
   transition: 0.3s ease;
 }
+
 .navbar.sticky .menu li a {
   color: cyan;
 }
+
 .navbar .menu li a:hover {
   color: black;
 }
+
 .navbar.sticky .menu li a:hover {
   color: #000;
 }
@@ -89,18 +100,23 @@ section {
   0% {
     box-shadow: 0 0 17px 3px #c586c0, 0 0 4px 2px #c586c0;
   }
+
   20% {
     box-shadow: 0 0 17px 3px #0ff, 0 0 4px 2px #0ff;
   }
+
   40% {
     box-shadow: 0 0 17px 3px #0f0, 0 0 4px 2px #0f0;
   }
+
   60% {
     box-shadow: 0 0 17px 3px #ffff01, 0 0 4px 2px #ffff01;
   }
+
   80% {
     box-shadow: 0 0 17px 3px #f00, 0 0 4px 2px #f00;
   }
+
   100% {
     box-shadow: 0 0 17px 3px #c586c0, 0 0 4px 2px #c586c0;
   }
@@ -119,6 +135,7 @@ section {
   cursor: pointer;
   display: none;
 }
+
 .scroll-up-btn {
   position: fixed;
   height: 45px;
@@ -138,11 +155,13 @@ section {
   pointer-events: none;
   transition: all 0.3s ease;
 }
+
 .scroll-up-btn.show {
   bottom: 30px;
   opacity: 1;
   pointer-events: auto;
 }
+
 .scroll-up-btn:hover {
   color: black;
   transform: scale(1.1);
@@ -263,6 +282,7 @@ section {
   from {
     opacity: 0.4;
   }
+
   to {
     opacity: 1;
   }
@@ -272,12 +292,16 @@ section {
   from {
     opacity: 0.4;
   }
+
   to {
     opacity: 1;
   }
 }
 
-.first img, .second img, .third img , .fourth img{
+.first img,
+.second img,
+.third img,
+.fourth img {
   object-fit: cover;
   width: 500px;
   height: 300px;
@@ -297,6 +321,7 @@ section {
   background: black;
   padding: 60px 0 0 0;
 }
+
 #login .form {
   position: relative;
   max-width: 850px;
@@ -306,6 +331,7 @@ section {
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
   perspective: 2700px;
 }
+
 .form .cover {
   position: absolute;
   top: 0;
@@ -317,9 +343,11 @@ section {
   transform-origin: left;
   transform-style: preserve-3d;
 }
-.form #flip:checked ~ .cover {
+
+.form #flip:checked~.cover {
   transform: rotateY(-180deg);
 }
+
 .form .cover .front,
 .form .cover .back {
   position: absolute;
@@ -329,10 +357,12 @@ section {
   width: 100%;
   transform: rotateX(0deg);
 }
+
 .cover .back {
   transform: rotateY(180deg);
   backface-visibility: hidden;
 }
+
 .form .cover::before,
 .form .cover::after {
   content: "";
@@ -343,11 +373,13 @@ section {
   opacity: 0.5;
   z-index: 12;
 }
+
 .form .cover::after {
   opacity: 0.3;
   transform: rotateY(180deg);
   backface-visibility: hidden;
 }
+
 .form .cover img {
   position: absolute;
   height: 100%;
@@ -355,26 +387,31 @@ section {
   object-fit: cover;
   z-index: 10;
 }
+
 .form .forms {
   height: 100%;
   width: 100%;
   background: #fff;
 }
+
 .form .form-content {
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
+
 .form-content .login-form,
 .form-content .signup-form {
   width: calc(100% / 2 - 25px);
 }
+
 .forms .form-content .title {
   position: relative;
   font-size: 24px;
   font-weight: 500;
   color: #333;
 }
+
 .forms .form-content .title:before {
   content: "";
   position: absolute;
@@ -384,12 +421,15 @@ section {
   width: 25px;
   background: crimson;
 }
+
 .forms .signup-form .title:before {
   width: 20px;
 }
+
 .forms .form-content .input-boxes {
   margin-top: 30px;
 }
+
 .forms .form-content .input-box {
   display: flex;
   align-items: center;
@@ -398,6 +438,7 @@ section {
   margin: 10px 0;
   position: relative;
 }
+
 .form-content .input-box input {
   height: 100%;
   width: 100%;
@@ -409,31 +450,38 @@ section {
   border-bottom: 2px solid rgba(0, 0, 0, 0.2);
   transition: all 0.3s ease;
 }
+
 .form-content .input-box input:focus,
 .form-content .input-box input:valid {
   border-color: crimson;
 }
+
 .form-content .input-box i {
   position: absolute;
   color: crimson;
   font-size: 17px;
 }
+
 .forms .form-content .text {
   font-size: 14px;
   font-weight: 500;
   color: #333;
 }
+
 .forms .form-content .text a {
   text-decoration: none;
   color: crimson;
 }
+
 .forms .form-content .text a:hover {
   text-decoration: underline;
 }
+
 .forms .form-content .button {
   color: #fff;
   margin-top: 40px;
 }
+
 .forms .form-content .button input {
   color: #fff;
   background: crimson;
@@ -442,38 +490,47 @@ section {
   cursor: pointer;
   transition: all 0.4s ease;
 }
+
 .forms .form-content .button input:hover {
   background: none;
   border: 4px solid crimson;
   color: crimson;
 }
+
 .forms .form-content label {
   color: crimson;
   cursor: pointer;
 }
+
 .forms .form-content label:hover {
   text-decoration: underline;
 }
+
 .forms .form-content .login-text,
 .forms .form-content .sign-up-text {
   text-align: center;
   margin-top: 25px;
 }
+
 .form #flip {
   display: none;
 }
+
 @media (max-width: 730px) {
   .form .cover {
     display: none;
   }
+
   .form-content .login-form,
   .form-content .signup-form {
     width: 100%;
   }
-  .form #flip:checked ~ .forms .signup-form {
+
+  .form #flip:checked~.forms .signup-form {
     display: block;
   }
-  .form #flip:checked ~ .forms .login-form {
+
+  .form #flip:checked~.forms .login-form {
     display: none;
   }
 }
@@ -485,6 +542,9 @@ footer {
   padding: 10px;
   text-align: center;
   border-top: 5px solid crimson;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
 }
 
 footer span {
@@ -539,6 +599,7 @@ footer span a:hover {
   margin: 0 0 1em 0;
   padding: 0 2.5em;
 }
+
 .contact2 .row.header {
   padding: 1.5em 2em;
   border-bottom: 1px solid #ccc;
@@ -546,6 +607,7 @@ footer span a:hover {
   color: #fff;
   text-align: center;
 }
+
 .contact2 .row.body {
   padding: 0.5em 2.5em 1em;
 }
@@ -586,12 +648,14 @@ footer span a:hover {
   border: 3px solid crimson;
   cursor: pointer;
 }
+
 /* .contact2 .btn:hover {
   background-color: #bfbfbf;
 } */
 .contact2 .btn.btn-submit {
   background-color: crimson;
 }
+
 .contact2 .btn.btn-submit:hover {
   background: none;
   color: crimson;
@@ -601,28 +665,34 @@ footer span a:hover {
   max-width: 100%;
   display: block;
 }
+
 .contact2 form ul {
   margin: 0;
   padding: 0;
   list-style: none;
 }
+
 .contact2 form ul li {
   margin: 0 0 0.25em 0;
   clear: both;
   display: inline-block;
   width: 100%;
 }
+
 .contact2 form ul li:last-child {
   margin: 0;
 }
+
 .contact2 form ul li p {
   margin: 0;
   padding: 0;
   float: left;
 }
+
 .contact2 form ul li p.right {
   float: right;
 }
+
 .contact2 form ul li .divider {
   margin: 0.5em 0 0.5em 0;
   border: 0;
@@ -631,15 +701,18 @@ footer span a:hover {
   display: block;
   background-color: crimson;
 }
+
 .contact2 form ul li .req {
   color: black;
 }
+
 .contact2 form label {
   display: block;
   margin: 0 0 0.5em 0;
   color: crimson;
   font-size: 1em;
 }
+
 .contact2 form input {
   margin: 0 0 0.5em 0;
   border: 3px solid #ccc;
@@ -648,9 +721,11 @@ footer span a:hover {
   font-size: 1em;
   outline: none
 }
-.contact2 form input:focus{
-    border: 3px solid crimson;
+
+.contact2 form input:focus {
+  border: 3px solid crimson;
 }
+
 .contact2 form textarea {
   border: 3px solid #ccc;
   padding: 6px 10px;
@@ -658,9 +733,11 @@ footer span a:hover {
   color: #555;
   outline: none;
 }
-.contact2 form textarea:focus{
-    border: 3px solid crimson;
+
+.contact2 form textarea:focus {
+  border: 3px solid crimson;
 }
+
 .contact2 form small {
   color: crimson;
   margin: 0 0 0 0.5em;
@@ -713,10 +790,13 @@ footer span a:hover {
 .phone {
   text-align: left;
 }
+
 .email {
   text-align: right;
 }
-.phone,.email {
+
+.phone,
+.email {
   margin-top: 30px;
 }
 
@@ -724,6 +804,7 @@ footer span a:hover {
   font-size: 40px;
   font-weight: 300;
 }
+
 .contact1 h4 {
   color: crimson;
 }
@@ -731,6 +812,7 @@ footer span a:hover {
 .line2 {
   margin-top: 50px;
 }
+
 .line2 h2 {
   text-align: center;
   font-size: 30px;
@@ -747,6 +829,7 @@ footer span a:hover {
   margin-top: 30px;
   justify-content: center;
 }
+
 .icons1 li {
   position: relative;
   list-style: none;
@@ -762,11 +845,13 @@ footer span a:hover {
   /* border: 3px solid crimson; */
   box-shadow: -3px -3px 7px #ffffff73, 3px 3px 5px #ffffff73;
 }
+
 .icons1 li a {
   line-height: 50px;
   font-size: 30px;
   color: #fff;
 }
+
 .icons1 li.shadow-2 a {
   position: absolute;
   top: 50%;
@@ -785,12 +870,15 @@ footer span a:hover {
 .icons1 li:nth-child(1).fill-color a {
   color: #1da1f2;
 }
+
 .icons1 li:nth-child(2).fill-color a {
   color: #e1306c;
 }
+
 .icons1 li:nth-child(3).fill-color a {
   color: #3b5998;
 }
+
 .icons1 li:nth-child(4).fill-color a {
   color: #c4302b;
 }
@@ -799,14 +887,17 @@ footer span a:hover {
   background-color: #1da1f2;
   transform: scale(1.05);
 }
+
 .icons1 li:nth-child(2).fill-back:hover {
   background-color: #e1306c;
   transform: scale(1.05);
 }
+
 .icons1 li:nth-child(3).fill-back:hover {
   background-color: #3b5998;
   transform: scale(1.05);
 }
+
 .icons1 li:nth-child(4).fill-back:hover {
   background-color: #c4302b;
   transform: scale(1.05);
@@ -827,7 +918,7 @@ footer span a:hover {
   font-size: 44px;
   font-weight: 300;
   border-bottom: 3px solid crimson;
-  color: white ;
+  color: white;
 }
 
 .brands-content {
@@ -837,7 +928,7 @@ footer span a:hover {
   flex-wrap: wrap;
 }
 
-.brand-item img:hover{
+.brand-item img:hover {
   transform: scale(1.05);
 }
 
@@ -846,7 +937,7 @@ footer span a:hover {
   opacity: 1;
 }
 
-.brand-item img{
+.brand-item img {
   height: 200px;
   width: 200px;
   margin: 35px 100px;
@@ -858,7 +949,7 @@ footer span a:hover {
   text-align: center;
 }
 
-.brand-item input[type=submit]{
+.brand-item input[type=submit] {
   background-color: crimson;
   border: 2px solid crimson;
   color: white;
@@ -911,7 +1002,7 @@ footer span a:hover {
   height: 350px;
   border: 2px solid crimson;
   margin: 20px 30px;
-  
+
   box-shadow: 0 0 50px rgba(0, 0, 0, 0.315);
 }
 
@@ -928,7 +1019,7 @@ footer span a:hover {
   color: white;
 }
 
-.card_content .card_img img{
+.card_content .card_img img {
   width: 100%;
   height: 250px;
   border-bottom: 3px solid crimson;
@@ -939,7 +1030,7 @@ footer span a:hover {
   padding: 15px;
 }
 
-.card_btn input[type=submit]{
+.card_btn input[type=submit] {
   background-color: crimson;
   border: 2px solid crimson;
   color: white;
@@ -958,6 +1049,7 @@ footer span a:hover {
 #rent .container {
   background: url(/static/img/bg.png);
 }
+
 .rent-container {
   margin: 0;
   padding: 0;
@@ -979,6 +1071,7 @@ footer span a:hover {
   margin: 0 auto;
   padding: 120px 0 80px 0;
 }
+
 .rent_cars .card {
   position: relative;
   width: 300px;
@@ -988,6 +1081,7 @@ footer span a:hover {
   border-radius: 15px;
   box-shadow: 0 15px 60px rgba(0, 0, 0, 0.5);
 }
+
 .face {
   position: absolute;
   bottom: 0;
@@ -998,78 +1092,65 @@ footer span a:hover {
   justify-content: center;
   align-items: center;
 }
+
 .rent_cars .card .face.face1 {
   box-sizing: border-box;
   padding: 20px;
 }
+
 .rent_cars .card .face.face1 h2 {
   margin: 0;
   padding: 0;
 }
+
 .face1 h2 {
   background-color: crimson;
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
 }
+
 .face1 .carname h2 {
   background-color: white;
   font-size: 32px;
 }
+
 .face1 h2 span {
   text-decoration: underline;
   color: white;
+  font-size: 22px;
 }
+
 .face ul {
   list-style: none;
 }
+
 .face ul li::before {
   content: "\25AA";
   font-weight: bold;
   display: inline-block;
   width: 1em;
 }
+
 .face1 ul li {
   background-color: white;
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
 }
+
 .rent_cars .card .face.face2 {
   transition: 0.5s;
 }
+
 .rent_cars .card:hover .face.face2 {
   height: 60px;
 }
+
 .rent_cars .card:nth-child(1) .face.face2 {
   /* background: url(/static/img/brandcar1.jpg); */
   border-radius: 15px;
   background-position: left;
-}
-.rent_cars .card:nth-child(2) .face.face2 {
-  /* background: url(/static/img/brandcar8.jpg); */
-  border-radius: 15px;
-  background-position: left;
-}
-.rent_cars .card:nth-child(3) .face.face2 {
-  /* background: url(/static/img/brandcar5.jpg); */
-  border-radius: 15px;
-  background-position: left;
-}
-.rent_cars .card:nth-child(4) .face.face2 {
-  /* background: url(/static/img/rent5.jpg); */
-  border-radius: 15px;
-  background-position: left;
-}
-.rent_cars .card:nth-child(5) .face.face2 {
-  /* background: url(/static/img/rent6.jpg); */
-  border-radius: 15px;
-  background-position: left;
-}
-.rent_cars .card:nth-child(6) .face.face2 {
-  /* background: url(/static/img/rent4.jpg); */
-  border-radius: 15px;
-  background-position: left; 
 }
 
 .rent_btn {
@@ -1077,7 +1158,7 @@ footer span a:hover {
   margin-bottom: 50px;
 }
 
-.rent_btn a{
+.rent_btn a {
   background-color: crimson;
   color: white;
   border: 3px solid crimson;
@@ -1089,6 +1170,26 @@ footer span a:hover {
 .rent_btn a:hover {
   background: none;
   color: black;
+}
+
+.rent_cars .card .face .content .delbtn {
+  background: crimson;
+  display: inline-block;
+  padding: 5px 20px;
+  /* margin-bottom: 30px; */
+  color: white;
+}
+
+.rent_cars .card .face .content .delbtn:hover {
+  background: white;
+}
+
+.rent_cars .card .face .content .delbtn a {
+  color: white;
+}
+
+.rent_cars .card .face .content .delbtn:hover a {
+  color: crimson;
 }
 
 /* SPECS STYLES */
@@ -1116,6 +1217,7 @@ footer span a:hover {
   width: 100%;
   border-radius: 12px;
 }
+
 .specs__content {
   background-color: #fff;
   border-radius: 12px;
@@ -1123,6 +1225,7 @@ footer span a:hover {
   display: grid;
   row-gap: 8px;
 }
+
 .specs__profile {
   display: grid;
   grid-template-columns: 3fr 2fr;
@@ -1135,10 +1238,12 @@ footer span a:hover {
   transition: transform 0.25s cubic-bezier(0.7, 0.98, 0.86, 0.98), box-shadow 0.25s cubic-bezier(0.7, 0.98, 0.86, 0.98);
   background-color: #fff;
 }
+
 .specs__profile:hover {
   transform: scale(1.2);
   box-shadow: 0 9px 47px 11px rgba(51, 51, 51, 0.18);
 }
+
 .specs__name {
   color: #979cb0;
   font-weight: 600;
@@ -1146,6 +1251,7 @@ footer span a:hover {
   letter-spacing: 0.64px;
   margin-left: 12px;
 }
+
 .specs__value {
   color: crimson;
   font-weight: 700;
@@ -1185,7 +1291,7 @@ footer span a:hover {
   text-align: center;
 }
 
-.car_img img{
+.car_img img {
   width: 550px;
 }
 
@@ -1195,7 +1301,7 @@ footer span a:hover {
   margin: 60px 20.5px;
 }
 
-.car_data h1{
+.car_data h1 {
   font-size: 36px;
   font-weight: 200;
 }
@@ -1218,7 +1324,8 @@ footer span a:hover {
   /* margin-left: 80px; */
 }
 
-.car_btns a, .car_btns input {
+.car_btns a,
+.car_btns input {
   background-color: crimson;
   color: white;
   border: 3px solid crimson;
@@ -1229,7 +1336,8 @@ footer span a:hover {
   cursor: pointer;
 }
 
-.car_btns a:hover, .car_btns input:hover {
+.car_btns a:hover,
+.car_btns input:hover {
   background: none;
   color: black;
 }
@@ -1254,7 +1362,7 @@ footer span a:hover {
 }
 
 .booking .customer {
-  border-right: 3px solid crimson; 
+  border-right: 3px solid crimson;
 }
 
 .backtohome {
@@ -1266,7 +1374,7 @@ footer span a:hover {
   bottom: 0;
 }
 
-.backtohome a{
+.backtohome a {
   background-color: crimson;
   border: 2px solid crimson;
   color: white;
@@ -1305,6 +1413,7 @@ footer span a:hover {
   margin: 0 0 1em 0;
   padding: 0 2.5em;
 }
+
 .rent .row.header {
   padding: 1.5em 2em;
   border-bottom: 1px solid #ccc;
@@ -1312,6 +1421,7 @@ footer span a:hover {
   color: #fff;
   text-align: center;
 }
+
 .rent .row.body {
   padding: 0.5em 2.5em 1em;
 }
@@ -1352,39 +1462,48 @@ footer span a:hover {
   border: 3px solid crimson;
   cursor: pointer;
 }
+
 .rent .btn.btn-submit {
   background-color: crimson;
 }
+
 .rent .btn.btn-submit:hover {
   background: none;
   color: crimson;
 }
+
 .rent form {
   max-width: 100%;
   display: block;
 }
+
 .rent form ul {
   margin: 0;
   padding: 0;
   list-style: none;
 }
+
 .rent form ul li {
   margin: 0 0 0.25em 0;
   clear: both;
   display: inline-block;
   width: 100%;
 }
+
 .rent form ul li:last-child {
   margin: 0;
 }
+
 .rent form ul li p {
   margin: 0;
   padding: 0;
   float: left;
 }
+
 .rent form ul li p.right {
   float: right;
 }
+
 .rent form ul li .divider {
   margin: 0.5em 0 0.5em 0;
   border: 0;
@@ -1393,17 +1512,21 @@ footer span a:hover {
   display: block;
   background-color: crimson;
 }
+
 .rent form label {
   display: block;
   margin: 0 0 0.5em 0;
   color: crimson;
   font-size: 1em;
 }
-.rent .pull-right label{
+
+.rent .pull-right label {
   position: relative;
   right: -65px;
 }
-.rent form input, .rent form select {
+
+.rent form input,
+.rent form select {
   margin: 0 0 0.5em 0;
   border: 3px solid #ccc;
   padding: 6px 6px;
@@ -1411,9 +1534,12 @@ footer span a:hover {
   font-size: 1em;
   outline: none
 }
-.rent form input:focus, .rent form select:focus{
-    border: 3px solid crimson;
+
+.rent form input:focus,
+.rent form select:focus {
+  border: 3px solid crimson;
 }
+
 .rent form small {
   color: crimson;
   margin: 0 0 0 0.5em;
@@ -1458,18 +1584,22 @@ footer span a:hover {
 }
 
 .rent_success {
-  position: fixed; 
+  position: fixed;
   left: 0;
   top: 20px;
   width: 100%;
   height: 100%;
   overflow-y: auto;
-  background-color: rgb(0,0,0); /* Fallback color */
-  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  background-color: rgb(0, 0, 0);
+  /* Fallback color */
+  background-color: rgba(0, 0, 0, 0.4);
+  /* Black w/ opacity */
 }
+
 .rent_success .customer {
   width: 50%;
 }
+
 .rent_success-content {
   background: url(/static/img/bg.png);
   margin: 100px auto;
@@ -1490,7 +1620,7 @@ footer span a:hover {
   padding: 10px;
 }
 
-.landing-btn a{
+.landing-btn a {
   background-color: crimson;
   border: 2px solid crimson;
   color: white;
@@ -1515,11 +1645,11 @@ footer span a:hover {
   height: 70vh;
 } */
 
-#landing .home-content h2{
+#landing .home-content h2 {
   margin: 10px;
 }
 
-.home-content h2{
+.home-content h2 {
   text-align: center;
   margin: 0;
   font-weight: 400;
@@ -1577,12 +1707,14 @@ footer span a:hover {
   width: 100%;
   height: 92.5vh;
   overflow: hidden;
-  background-color: rgb(0,0,0);
-  background-color: rgba(0,0,0,0.4);
+  background-color: rgb(0, 0, 0);
+  background-color: rgba(0, 0, 0, 0.4);
 }
+
 .buy_success .customer {
   width: 50%;
 }
+
 .buy_success-content {
   background: url(/static/img/bg.png);
   margin: 120px auto 60px auto;
@@ -1618,59 +1750,77 @@ footer span a:hover {
     margin-left: 0px;
   }
 }
+
 @media (max-width: 1060px) {
   .line1 {
     width: 600px !important;
   }
+
   .contact1 h1 {
     font-size: 32px;
   }
+
   .specs_container {
     grid-template-columns: 3fr;
   }
 }
+
 @media (max-width: 991px) {
   .max-width {
     padding: 0 30px;
   }
-  .first,.second,.third, .fourth { 
+
+  .first,
+  .second,
+  .third,
+  .fourth {
     padding: 30px;
   }
-  .slideshow-container{
+
+  .slideshow-container {
     width: 100%;
   }
 }
+
 @media (max-width: 953px) {
   .customer {
     border-bottom: 3px solid crimson;
     border-right: none !important;
   }
+
   .customer {
     width: 100% !important;
   }
+
   .booking_details {
     width: 100% !important;
   }
-  .rent_success-content h2{
+
+  .rent_success-content h2 {
     font-size: 22px;
   }
-  .rent_success-content h3{
+
+  .rent_success-content h3 {
     font-size: 18px;
   }
 }
+
 @media (max-width: 947px) {
   .menu-btn {
     display: block;
     z-index: 999;
   }
+
   .menu-btn i:hover {
     transform: scale(1.2);
     color: cyan;
   }
+
   .menu-btn i.active:before {
     content: "\f00d";
     color: crimson;
   }
+
   .navbar .menu {
     position: fixed;
     height: 100vh;
@@ -1682,71 +1832,95 @@ footer span a:hover {
     padding-top: 80px;
     transition: all 0.3s ease;
   }
+
   .navbar .menu.active {
     left: 0;
   }
+
   .navbar .menu li {
     display: block;
   }
+
   .navbar .menu li a {
     display: inline-block;
     margin: 20px 0;
     font-size: 25px;
     color: cyan;
   }
-  .navbar .menu li a:hover, .navbar.sticky .menu li a:hover {
+
+  .navbar .menu li a:hover,
+  .navbar.sticky .menu li a:hover {
     color: crimson;
   }
+
   .navbar.sticky {
     opacity: 1;
   }
+
   .active {
     color: crimson !important;
   }
+
   .car_img {
     border-right: 3px solid white;
     border-bottom: 3px solid crimson;
   }
+
   .buy_main {
     margin-bottom: -100px;
   }
+
   .car_data {
     margin: 30px 20.5px 20px 20.5px;
   }
 }
+
 @media (max-width: 944px) {
   .car_img {
     border-right: none;
   }
 }
+
 @media (max-width: 690px) {
   .max-width {
     padding: 0 23px;
   }
-  .first,.second,.third,.fourth { 
+
+  .first,
+  .second,
+  .third,
+  .fourth {
     padding: 20px 10px;
   }
+
   .line1 {
     width: 400px !important;
   }
-  .line1 .email{
+
+  .line1 .email {
     text-align: left;
   }
+
   .booking h2 {
     font-size: 20px;
   }
+
   .rent_success-content {
     width: 90%;
   }
-  .car_img img{
+
+  .car_img img {
     width: 420px;
   }
+
   .buy_main {
     padding: 15px;
   }
+
   .car_data h2 {
     font-size: 26px;
   }
+
   .car_data h1 {
     font-size: 32px;
   }
@@ -1761,55 +1935,72 @@ footer span a:hover {
     font-size: 23px;
     line-height: 38px;
   }
+
   .line1 {
     width: 300px !important;
   }
+
   .contact1 h1 {
     font-size: 22px;
   }
+
   .booking h2 {
     font-size: 17px;
   }
+
   .rent_success-content {
     width: 95%;
   }
-  .rent_success-content h2{
+
+  .rent_success-content h2 {
     font-size: 18px;
   }
-  .rent_success-content h3{
+
+  .rent_success-content h3 {
     font-size: 16px;
   }
+
   .specs__name {
     font-size: 14px;
   }
+
   .specs__value {
     font-size: 18px;
   }
+
   .specs__content {
     padding: 10px 15px;
   }
-  .car_img img{
+
+  .car_img img {
     width: 260px;
   }
+
   .car_data h2 {
     font-size: 22px;
   }
+
   .car_data h1 {
     font-size: 28px;
   }
+
   .car_data .rating {
     margin: 20px 0;
   }
-  .car_btns a, .car_btns input{
+
+  .car_btns a,
+  .car_btns input {
     font-size: 18px;
     margin: 4px;
   }
+
   .buy_main {
     margin: 0px auto -120px auto;
   }
 }
+
 @media (max-width: 326px) {
-  .navbar .logo a{
+  .navbar .logo a {
     font-size: 30px;
   }
 }
@@ -1827,3 +2018,80 @@ footer span a:hover {
   opacity: 0;
   transform: translateX(-300px);
 }
+
+/* admin page styles */
+
+.features {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+.features .card {
+  margin: 40px;
+  /* margin-bottom: 20px; */
+  /* margin-top: 80px; */
+  position: relative;
+  height: 200px;
+  line-height: 200px;
+  width: 300px;
+  background-color: #0cbaba;
+  background-image: linear-gradient(315deg, crimson 0%, #380036 74%);
+  border-radius: 50px;
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+  color: #fff;
+  padding: 10px;
+}
+
+.features .card:nth-child(1) {
+  margin-top: 80px;
+}
+
+.features .card:nth-child(2) {
+  margin-top: 80px;
+}
+
+.features .card:nth-child(3) {
+  margin-top: 80px;
+}
+
+.features .card a {
+  color: white;
+  text-decoration: none;
+}
+
+/* CONTACT REQUESTS */
+
+.contact-req {
+  margin-top: 30px;
+}
+
+#customers {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#customers td,
+#customers th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#customers tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+#customers tr:hover {
+  background-color: #ddd;
+}
+
+#customers th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: crimson;
+  color: white;
+}
+
+/* SELL REQUESTS  */
